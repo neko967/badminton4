@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function MatchRecord() {
+export default function MatchCard() {
   return(
     <div className="card">
       <div className="player">

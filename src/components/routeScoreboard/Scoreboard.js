@@ -6,7 +6,7 @@ import ScoreSheet from './ScoreSheet.js';
 
 function Scoreboard() {
   return (
-    <div>
+    <div className="App">
       <Container maxWidth="lg" sx={{marginTop: {xs:5, sm:6}}}>
         <Player />
         <PointAndCourt/>

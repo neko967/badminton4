@@ -6,7 +6,7 @@ import NewGameButton from './NewGameButton.js';
 
 export default function Home() {
   return (
-    <div className="homepage">
+    <div className="App">
       <NewGameButton/>
     </div>
   );

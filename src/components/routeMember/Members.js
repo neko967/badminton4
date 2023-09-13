@@ -3,7 +3,7 @@ import Member from './Member.js';
 
 export default function People() {
   return (
-    <div>
+    <div className="App">
       <Member/>
     </div>
   );

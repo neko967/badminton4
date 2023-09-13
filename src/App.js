@@ -20,9 +20,7 @@ const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
 
   return (
     <>
-    <React.Fragment>
       <Router>
-        <CssBaseline />
         <Navbar isAuth={isAuth}/>
         <DrawerLeft isAuth={isAuth}/>
         <Routes>
@@ -38,7 +36,6 @@ const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
         </Routes>
         <BottomNavigation />
       </Router>
-    </React.Fragment>
     </>
     
     

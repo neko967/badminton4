@@ -5,7 +5,8 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import Score from './Point.js';
+import LeftPoint from './LeftPoint.js';
+import RightPoint from './RightPoint.js';
 import Court from './Court.js';
 
 export default function PointAndCourt() {
@@ -18,10 +19,10 @@ export default function PointAndCourt() {
       <Grid container spacing={1}>
         {sm_matches && <>
           <Grid xs={6} sm={6}>
-            <Score/>
+            <LeftPoint/>
           </Grid>
           <Grid xs={6} sm={6}>
-          <Score/>
+          <RightPoint/>
           </Grid>
           <Grid xs={12} sm={12}>
             <Court/>
@@ -29,13 +30,13 @@ export default function PointAndCourt() {
         </>}
         {md_matches && <>
           <Grid md={2.5}>
-            <Score/>
+            <LeftPoint/>
           </Grid>
           <Grid md={7}>
             <Court/>
           </Grid>
           <Grid md={2.5}>
-            <Score/>
+            <RightPoint/>
           </Grid>
         </>}
       </Grid>

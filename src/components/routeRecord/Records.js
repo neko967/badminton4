@@ -4,7 +4,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 
-import MatchRecord from './MatchRecord.js';
+import MatchRecord from './MatchCard.js';
 
 export default function Record() {
   const Item = styled(Paper)(({ theme }) => ({
@@ -16,8 +16,8 @@ export default function Record() {
   }));
 
   return (
-    <div>
-      <Box sx={{ flexGrow: 1, marginTop: {xs:9, sm:10}}}>
+    <div className="App">
+      <Box sx={{ flexGrow: 1, marginTop: {xs:6, sm:7}}}>
         <div className="matchCardContainer">
           <MatchRecord></MatchRecord>
         </div>
