@@ -3,6 +3,7 @@ import Container from '@mui/material/Container';
 import Player from './Player.js';
 import PointAndCourt from './PointAndCourt.js';
 import ScoreSheet from './ScoreSheet.js';
+import SpeedDialTooltipOpen from './SpeedDialTooltipOpen.js';
 
 export default function Scoreboard() {
   const [leftPoint , setLeftPoint] = useState(0);
@@ -20,7 +21,6 @@ export default function Scoreboard() {
     setLeftIsServer(true);
     nextSquares[0][leftPoint + rightPoint +1] = leftPoint +1;
     setPointHistory([...pointHistory, [nextSquares[0], nextSquares[1]]]);
-    console.log(nextSquares[0][0]);
   }
 
   function handleRightPointClick() {
@@ -29,13 +29,12 @@ export default function Scoreboard() {
     setLeftIsServer(false);
     nextSquares[1][leftPoint + rightPoint +1] = rightPoint+1;
     setPointHistory([...pointHistory, [nextSquares[0], nextSquares[1]]]);
-    console.log(pointHistory);
   }
 
 
   return (
     <div className="App">
-      <Container maxWidth="lg" sx={{marginTop: {xs:5, sm:6}}}>
+      <Container maxWidth="lg" sx={{marginTop: {xs:8, sm:9}}}>
         <Player />
         <PointAndCourt
           leftPoint={leftPoint} 
@@ -46,6 +45,7 @@ export default function Scoreboard() {
           handleRightPointClick={handleRightPointClick}
         />
         <ScoreSheet currentSquares={currentSquares}/>
+        <SpeedDialTooltipOpen />
       </Container>
     </div>
   );

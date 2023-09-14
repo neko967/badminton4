@@ -20,7 +20,6 @@ const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
   return (
     <>
       <Router>
-        <Navbar isAuth={isAuth}/>
         <DrawerLeft isAuth={isAuth}/>
         <Routes>
           <Route path="/" element={<Home />} />
