@@ -4,23 +4,27 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 
-import { useState } from 'react';
-
-export default function LeftPoint() {
+export default function LeftPoint({leftPoint, leftIsServer, onPointClick }) {
   
-  const [point , setPoint] = useState(0);
-
-  function handleClick() {
-    setPoint(point + 1);
-  }
   return (
     <>
+      {leftIsServer ?
+      <Box 
+        sx={{ height: {xs:150, md:360}, marginTop: 0, backgroundColor: 'red', lineHeight: {xs:9, md:21},
+        '&:hover': { backgroundColor: 'white.main', opacity: [0.9, 0.8, 0.7], },}}
+        onClick={onPointClick}
+      >
+        {leftPoint}
+      </Box>
+      :
       <Box 
         sx={{ height: {xs:150, md:360}, marginTop: 0, backgroundColor: 'white', lineHeight: {xs:9, md:21},
         '&:hover': { backgroundColor: 'white.main', opacity: [0.9, 0.8, 0.7], },}}
-        onClick={handleClick}
+        onClick={onPointClick}
       >
-          {point}</Box>
+        {leftPoint}
+      </Box>
+      }
     </>
   );
 }

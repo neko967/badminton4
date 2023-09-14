@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './components/routeHome/Home';
 import Scoreboard from './components/routeScoreboard/Scoreboard';
 import Record from './components/routeRecord/Records';
@@ -13,7 +13,6 @@ import Navbar from './components/Navbar';
 import DrawerLeft from './components/DrawerLeft.js';
 import BottomNavigation from './components/BottomNavigation.js';
 import { useState } from 'react';
-import { CssBaseline } from '@mui/material';
 
 function App() {
 const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
