@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 import LeftPoint from './LeftPoint.js';

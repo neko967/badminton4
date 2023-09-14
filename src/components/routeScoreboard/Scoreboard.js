@@ -4,23 +4,35 @@ import Player from './Player.js';
 import PointAndCourt from './PointAndCourt.js';
 import ScoreSheet from './ScoreSheet.js';
 
-function Scoreboard() {
+export default function Scoreboard() {
   const [leftPoint , setLeftPoint] = useState(0);
   const [leftIsServer, setLeftIsServer] = useState(false);
   const [rightPoint , setRightPoint] = useState(0);
   const [rightIsServer, setRightIsServer] = useState(true);
+  const [pointHistory, setPointHistory] = useState([[Array(60).fill(null), Array(60).fill(null)]]);
+  const currentSquares = pointHistory[pointHistory.length - 1];
+  const nextSquares = currentSquares.slice();
+
 
   function handleLeftPointClick() {
     setLeftPoint(leftPoint + 1);
-    setLeftIsServer(true);
     setRightIsServer(false);
+    setLeftIsServer(true);
+    nextSquares[0][leftPoint + rightPoint +1] = leftPoint +1;
+    setPointHistory([...pointHistory, [nextSquares[0], nextSquares[1]]]);
+    console.log(nextSquares[0][0]);
   }
 
   function handleRightPointClick() {
     setRightPoint(rightPoint + 1);
     setRightIsServer(true);
     setLeftIsServer(false);
+    nextSquares[1][leftPoint + rightPoint +1] = rightPoint+1;
+    setPointHistory([...pointHistory, [nextSquares[0], nextSquares[1]]]);
+    console.log(pointHistory);
   }
+
+
   return (
     <div className="App">
       <Container maxWidth="lg" sx={{marginTop: {xs:5, sm:6}}}>
@@ -33,10 +45,8 @@ function Scoreboard() {
           rightIsServer={rightIsServer}
           handleRightPointClick={handleRightPointClick}
         />
-        <ScoreSheet />
+        <ScoreSheet currentSquares={currentSquares}/>
       </Container>
     </div>
   );
 }
-
-export default Scoreboard;

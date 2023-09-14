@@ -1,8 +1,5 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Unstable_Grid2';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
 
 export default function LeftPoint({leftPoint, leftIsServer, onPointClick }) {
   
