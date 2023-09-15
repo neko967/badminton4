@@ -3,7 +3,6 @@ import Container from '@mui/material/Container';
 import Player from './Player.js';
 import PointAndCourt from './PointAndCourt.js';
 import ScoreSheet from './ScoreSheet.js';
-import SpeedDialTooltipOpen from './SpeedDialTooltipOpen.js';
 import Snackbar from './Snackbar';
 
 export default function Scoreboard() {
@@ -47,7 +46,6 @@ export default function Scoreboard() {
         />
         <ScoreSheet currentSquares={currentSquares}/>
         <Snackbar />
-        <SpeedDialTooltipOpen />
       </Container>
     </div>
   );

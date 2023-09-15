@@ -4,8 +4,8 @@ import Paper from '@mui/material/Paper';
 import HomeIcon from '@mui/icons-material/Home';
 import ScoreboardIcon from '@mui/icons-material/Scoreboard';
 import RestoreIcon from '@mui/icons-material/Restore';
-import PeopleIcon from '@mui/icons-material/People';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import GroupsIcon from '@mui/icons-material/Groups';
 
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
@@ -31,10 +31,10 @@ export default function Menu() {
                 setValue(newValue);
               }}
             >
-              <BottomNavigationAction icon={<HomeIcon />} onClick={() => navigate('/')}/>
-              <BottomNavigationAction icon={<ScoreboardIcon />} onClick={() => navigate('/scoreboard')}/>
+              <BottomNavigationAction icon={<HomeIcon />} onClick={() => navigate('/home')}/>
+              <BottomNavigationAction icon={<ScoreboardIcon />} onClick={() => navigate('/')}/>
               <BottomNavigationAction icon={<RestoreIcon />} onClick={() => navigate('/record')}/>
-              <BottomNavigationAction icon={<PeopleIcon />} onClick={() => navigate('/member')}/>
+              <BottomNavigationAction icon={<GroupsIcon />} onClick={() => navigate('/member')}/>
             </BottomNavigation>
           </Paper> 
         </Box>

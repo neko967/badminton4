@@ -48,7 +48,7 @@ export default function Members() {
 
   return (
     <>
-      <TableContainer component={Paper} sx={{marginTop: {xs:4 ,sm:5}}}>
+      <TableContainer component={Paper} sx={{marginTop: {xs:7 ,sm:8}}}>
         <Table aria-label="customized table">
           <TableHead>
             <TableRow>

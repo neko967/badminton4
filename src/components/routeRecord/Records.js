@@ -17,7 +17,7 @@ export default function Record() {
 
   return (
     <div className="App">
-      <Box sx={{ flexGrow: 1, marginTop: {xs:6, sm:7}}}>
+      <Box sx={{ flexGrow: 1, marginTop: {xs:7.1, sm:8.1}}}>
         <div className="matchCardContainer">
           <MatchRecord></MatchRecord>
         </div>

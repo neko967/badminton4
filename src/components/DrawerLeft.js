@@ -107,7 +107,7 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         <List>
-          <ListItem disablePadding onClick={() => navigate('/')}>
+          <ListItem disablePadding onClick={() => navigate('/home')}>
             <ListItemButton>
               <ListItemIcon>
                 <HomeIcon />
@@ -115,7 +115,7 @@ export default function PersistentDrawerLeft() {
               <ListItemText primary='ホーム' />
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding onClick={() => navigate('/scoreboard')}>
+          <ListItem disablePadding onClick={() => navigate('/')}>
             <ListItemButton>
               <ListItemIcon>
                 <ScoreboardIcon />

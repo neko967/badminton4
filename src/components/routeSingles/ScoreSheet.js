@@ -14,20 +14,10 @@ export default function ScoreSheet ({currentSquares}) {
           <button className="square">S</button>
           <LeftUpPointInScoreSheet squares={currentSquares[0]}/>
         </div>
-        <div className="board-row">
-          <button className="nameSquare">Player B</button>
-          <button className="square"></button>
-          <LeftUpPointInScoreSheet squares={currentSquares[0]}/>
-        </div>
         <Divider />
         <div className="board-row">
           <button className="nameSquare">Player C</button>
           <button className="square">R</button>
-          <RightUpPointInScoreSheet squares={currentSquares[1]}/>
-        </div>
-        <div className="board-row">
-          <button className="nameSquare">Player D</button>
-          <button className="square"></button>
           <RightUpPointInScoreSheet squares={currentSquares[1]}/>
         </div>
         </Paper>

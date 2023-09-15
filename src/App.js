@@ -3,6 +3,8 @@ import './App.css';
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './components/routeHome/Home';
 import Scoreboard from './components/routeScoreboard/Scoreboard';
+import Singles from './components/routeSingles/SinglesScoreboard';
+import Doubles from './components/routeDoubles/DoublesScoreboard';
 import Record from './components/routeRecord/Records';
 import Member from './components/routeMember/Members';
 import Homey from './components/Homey';
@@ -22,8 +24,10 @@ const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
       <Router>
         <DrawerLeft isAuth={isAuth}/>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/scoreboard" element={<Scoreboard />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Scoreboard />} />
+          <Route path="/singles" element={<Singles />} />
+          <Route path="/doubles" element={<Doubles />} />
           <Route path="/record" element={<Record />} />
           <Route path="/member" element={<Member />} />
 
