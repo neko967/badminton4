@@ -11,8 +11,8 @@ import Homey from './components/Homey';
 import CreatePost from './components/CreatePost';
 import Login from './components/Login';
 import Logout from './components/Logout';
-import Navbar from './components/Navbar';
 import DrawerLeft from './components/DrawerLeft.js';
+import Navbar from './components/Navbar';
 import BottomNavigation from './components/BottomNavigation.js';
 import { useState } from 'react';
 
@@ -22,7 +22,7 @@ const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
   return (
     <>
       <Router>
-        <DrawerLeft isAuth={isAuth}/>
+        <DrawerLeft isAuth={isAuth} setIsAuth={setIsAuth}/>
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/" element={<Scoreboard />} />

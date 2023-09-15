@@ -22,11 +22,15 @@ import HomeIcon from '@mui/icons-material/Home';
 import ScoreboardIcon from '@mui/icons-material/Scoreboard';
 import RestoreIcon from '@mui/icons-material/Restore';
 import PeopleIcon from '@mui/icons-material/People';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 import Avatar from '@mui/material/Avatar';
 import { useNavigate } from 'react-router-dom';
+import { auth, provider } from '../firebase'
+import { signInWithPopup, signOut } from 'firebase/auth'
 
-const drawerWidth = 240;
+const drawerWidth = 250;
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -54,7 +58,26 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function PersistentDrawerLeft() {
+export default function PersistentDrawerLeft({ isAuth, setIsAuth }) {
+  const navigate = useNavigate();
+  const loginInWithGoogle = () => {
+    //Googleでログイン
+    signInWithPopup(auth, provider).then((result) => {
+      localStorage.setItem("isAuth", true);
+      setIsAuth(true);
+      navigate("/");
+    });
+  }
+
+  const logout = () => {
+    //ログアウト
+    signOut(auth).then(() => {
+      localStorage.clear();
+      setIsAuth(false);
+      navigate("/login");
+    });
+  };
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -65,8 +88,6 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
-  const navigate = useNavigate();
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -83,7 +104,7 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Badminton Scoreboard
+            BadJudgeMaster
           </Typography>
         </Toolbar>
       </AppBar>
@@ -142,16 +163,25 @@ export default function PersistentDrawerLeft() {
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          {isAuth ? 
+          <ListItem key='ログアウト' disablePadding onClick={logout}>
+            <ListItemButton>
+              <ListItemIcon>
+                <LogoutIcon />
+              </ListItemIcon>
+              <ListItemText primary='ログアウト' />
+            </ListItemButton>
+          </ListItem>
+          :
+          <ListItem key='ログイン' disablePadding onClick={loginInWithGoogle}>
+            <ListItemButton>
+              <ListItemIcon>
+                <LoginIcon />
+              </ListItemIcon>
+              <ListItemText primary='ログイン' />
+            </ListItemButton>
+          </ListItem>
+          }
         </List>
       </Drawer>
     </Box>

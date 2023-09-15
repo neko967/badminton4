@@ -26,8 +26,7 @@ const MenuProps = {
 };
 
 const names = [
-  'Oliver Hansen','Van Henry','April Tucker','Ralph Hubbard','Omar Alexander','Carlos Abbott',
-  'Miriam Wagner','Bradley Wilkerson','Virginia Andrews','Kelly Snyder',
+  'ゲストA','ゲストB','ゲストC','ゲストD'
 ];
 
 export default function DialogSelect({ age, singlesOpen, handleSinglesClose, handleSinglesChange }) {
@@ -48,7 +47,7 @@ export default function DialogSelect({ age, singlesOpen, handleSinglesClose, han
   return (
     <div>
       <Dialog disableEscapeKeyDown open={singlesOpen} onClose={handleSinglesClose}>
-        <DialogTitle>Fill the form</DialogTitle>
+        <DialogTitle>出場選手を選んでください</DialogTitle>
         <DialogContent>
           <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap' }}>
             <FormControl sx={{ m: 1, width: 300 }}>

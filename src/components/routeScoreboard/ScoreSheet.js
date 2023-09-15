@@ -7,17 +7,17 @@ export default function ScoreSheet ({currentSquares}) {
 
   return (
     <div className="scoreSheet">
-      <Box sx={{ display: 'fix', flexWrap: 'wrap', '& > :not(style)': { m: 1, width: 1800, height: 112, }, }} >
+      <Box sx={{ display: 'fix', flexWrap: 'wrap', '& > :not(style)': { m: 1, width: 1800, height: 100, }, }} >
         <Paper variant="outlined" square>
         <div className="board-row">
-          <button className="nameSquare">Player A</button>
-          <button className="square">S</button>
+          <button className="nameSquare">ゲストA</button>
+          <button className="square">R</button>
           <LeftUpPointInScoreSheet squares={currentSquares[0]}/>
         </div>
         <Divider />
         <div className="board-row">
-          <button className="nameSquare">Player C</button>
-          <button className="square">R</button>
+          <button className="nameSquare">ゲストB</button>
+          <button className="square">S</button>
           <RightUpPointInScoreSheet squares={currentSquares[1]}/>
         </div>
         </Paper>
@@ -34,7 +34,7 @@ function LeftUpPointInScoreSheet ({squares})  {
 
   return (
     <>
-      <Square value={squares[0]} />
+      <Square value="0" />
       <Square value={squares[1]} />
       <Square value={squares[2]} />
       <Square value={squares[3]} />
@@ -103,7 +103,7 @@ function RightUpPointInScoreSheet ({squares})  {
 
   return (
     <>
-      <Square value={squares[0]} />
+      <Square value="0" />
       <Square value={squares[1]} />
       <Square value={squares[2]} />
       <Square value={squares[3]} />

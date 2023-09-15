@@ -18,10 +18,10 @@ export default function Player() {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={1}>
         <Grid xs={6}>
-          <Item>Player A</Item>
+          <Item>ゲストA</Item>
         </Grid>
         <Grid xs={6}>
-          <Item>Player B</Item>
+          <Item>ゲストB</Item>
         </Grid>
       </Grid>
     </Box>

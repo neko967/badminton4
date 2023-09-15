@@ -5,6 +5,8 @@ import PointAndCourt from './PointAndCourt.js';
 import ScoreSheet from './ScoreSheet.js';
 import SpeedDialTooltipOpen from './SpeedDialTooltipOpen.js';
 import Snackbar from './Snackbar';
+import SuggestToLogin from './SuggestToLogin';
+import Login from '../Login';
 import './Scoreboard.css';
 
 export default function Scoreboard() {
@@ -47,8 +49,6 @@ export default function Scoreboard() {
           handleRightPointClick={handleRightPointClick}
         />
         <ScoreSheet currentSquares={currentSquares}/>
-        <Snackbar />
-        <SpeedDialTooltipOpen />
       </Container>
     </div>
   );

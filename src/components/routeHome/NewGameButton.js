@@ -8,7 +8,7 @@ export default function NewGameButton() {
     <div>
       <Box sx={{ '& > :not(style)': { m: 1 } }} >
         <Fab variant="extended" color="primary" sx={{ position: 'flex', top: 400 }}>
-           New Game
+           ログイン
         </Fab>
       </Box>
     </div>
