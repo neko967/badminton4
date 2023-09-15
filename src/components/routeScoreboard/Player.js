@@ -17,17 +17,11 @@ export default function Player() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={1}>
-        <Grid xs={3}>
+        <Grid xs={6}>
           <Item>Player A</Item>
         </Grid>
-        <Grid xs={3}>
+        <Grid xs={6}>
           <Item>Player B</Item>
-        </Grid>
-        <Grid xs={3}>
-          <Item>Player C</Item>
-        </Grid>
-        <Grid xs={3}>
-          <Item>Player D</Item>
         </Grid>
       </Grid>
     </Box>

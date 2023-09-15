@@ -7,27 +7,17 @@ export default function ScoreSheet ({currentSquares}) {
 
   return (
     <div className="scoreSheet">
-      <Box sx={{ display: 'fix', flexWrap: 'wrap', '& > :not(style)': { m: 1, width: 1800, height: 110, }, }} >
+      <Box sx={{ display: 'fix', flexWrap: 'wrap', '& > :not(style)': { m: 1, width: 1800, height: 112, }, }} >
         <Paper variant="outlined" square>
         <div className="board-row">
           <button className="nameSquare">Player A</button>
           <button className="square">S</button>
           <LeftUpPointInScoreSheet squares={currentSquares[0]}/>
         </div>
-        <div className="board-row">
-          <button className="nameSquare">Player B</button>
-          <button className="square"></button>
-          <LeftUpPointInScoreSheet squares={currentSquares[0]}/>
-        </div>
         <Divider />
         <div className="board-row">
           <button className="nameSquare">Player C</button>
           <button className="square">R</button>
-          <RightUpPointInScoreSheet squares={currentSquares[1]}/>
-        </div>
-        <div className="board-row">
-          <button className="nameSquare">Player D</button>
-          <button className="square"></button>
           <RightUpPointInScoreSheet squares={currentSquares[1]}/>
         </div>
         </Paper>

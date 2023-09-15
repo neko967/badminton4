@@ -5,6 +5,7 @@ import PointAndCourt from './PointAndCourt.js';
 import ScoreSheet from './ScoreSheet.js';
 import SpeedDialTooltipOpen from './SpeedDialTooltipOpen.js';
 import Snackbar from './Snackbar';
+import './Scoreboard.css';
 
 export default function Scoreboard() {
   const [leftPoint , setLeftPoint] = useState(0);

@@ -4,6 +4,7 @@ import Player from './Player.js';
 import PointAndCourt from './PointAndCourt.js';
 import ScoreSheet from './ScoreSheet.js';
 import Snackbar from './Snackbar';
+import './DoublesScoreboard.css';
 
 export default function Scoreboard() {
   const [leftPoint , setLeftPoint] = useState(0);
