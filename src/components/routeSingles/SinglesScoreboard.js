@@ -46,7 +46,6 @@ export default function Scoreboard() {
           handleRightPointClick={handleRightPointClick}
         />
         <ScoreSheet currentSquares={currentSquares}/>
-        <Snackbar />
       </Container>
     </div>
   );

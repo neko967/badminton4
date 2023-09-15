@@ -74,7 +74,7 @@ export default function PersistentDrawerLeft({ isAuth, setIsAuth }) {
     signOut(auth).then(() => {
       localStorage.clear();
       setIsAuth(false);
-      navigate("/login");
+      navigate("/");
     });
   };
 

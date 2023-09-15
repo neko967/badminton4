@@ -9,7 +9,7 @@ import SuggestToLogin from './SuggestToLogin';
 import Login from '../Login';
 import './Scoreboard.css';
 
-export default function Scoreboard() {
+export default function Scoreboard({ isAuth }) {
   const [leftPoint , setLeftPoint] = useState(0);
   const [leftIsServer, setLeftIsServer] = useState(false);
   const [rightPoint , setRightPoint] = useState(0);
@@ -49,6 +49,9 @@ export default function Scoreboard() {
           handleRightPointClick={handleRightPointClick}
         />
         <ScoreSheet currentSquares={currentSquares}/>
+        {isAuth && 
+        <SpeedDialTooltipOpen/>
+        }
       </Container>
     </div>
   );

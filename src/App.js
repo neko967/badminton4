@@ -25,7 +25,7 @@ const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
         <DrawerLeft isAuth={isAuth} setIsAuth={setIsAuth}/>
         <Routes>
           <Route path="/home" element={<Home />} />
-          <Route path="/" element={<Scoreboard />} />
+          <Route path="/" element={<Scoreboard isAuth={isAuth}/>} />
           <Route path="/singles" element={<Singles />} />
           <Route path="/doubles" element={<Doubles />} />
           <Route path="/record" element={<Record />} />
@@ -33,8 +33,6 @@ const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
 
           <Route path="/homey" element={<Homey/>}></Route>
           <Route path="/createpost" element={<CreatePost isAuth={isAuth}/>}></Route>
-          <Route path="/login" element={<Login setIsAuth={setIsAuth}/>}></Route>
-          <Route path="/logout" element={<Logout setIsAuth={setIsAuth}/>}></Route>
         </Routes>
         <BottomNavigation />
       </Router>
