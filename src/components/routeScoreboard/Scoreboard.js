@@ -5,8 +5,6 @@ import PointAndCourt from './PointAndCourt.js';
 import ScoreSheet from './ScoreSheet.js';
 import SpeedDialTooltipOpen from './SpeedDialTooltipOpen.js';
 import Snackbar from './Snackbar';
-import SuggestToLogin from './SuggestToLogin';
-import Login from '../Login';
 import './Scoreboard.css';
 
 export default function Scoreboard({ isAuth }) {
@@ -17,7 +15,6 @@ export default function Scoreboard({ isAuth }) {
   const [pointHistory, setPointHistory] = useState([[Array(60).fill(null), Array(60).fill(null)]]);
   const currentSquares = pointHistory[pointHistory.length - 1];
   const nextSquares = currentSquares.slice();
-
 
   function handleLeftPointClick() {
     setLeftPoint(leftPoint + 1);
@@ -49,9 +46,7 @@ export default function Scoreboard({ isAuth }) {
           handleRightPointClick={handleRightPointClick}
         />
         <ScoreSheet currentSquares={currentSquares}/>
-        {isAuth && 
         <SpeedDialTooltipOpen/>
-        }
       </Container>
     </div>
   );

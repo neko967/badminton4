@@ -17,18 +17,18 @@ export default function ScoreSheet ({currentSquares}) {
         <div className="board-row">
           <button className="doublesNameSquare">Player B</button>
           <button className="doublesSquare"></button>
-          <LeftUpPointInScoreSheet squares={currentSquares[0]}/>
+          <LeftUpPointInScoreSheet squares={currentSquares[1]}/>
         </div>
         <Divider />
         <div className="board-row">
           <button className="doublesNameSquare">Player C</button>
           <button className="doublesSquare">R</button>
-          <RightUpPointInScoreSheet squares={currentSquares[1]}/>
+          <RightUpPointInScoreSheet squares={currentSquares[2]}/>
         </div>
         <div className="board-row">
           <button className="doublesNameSquare">Player D</button>
           <button className="doublesSquare"></button>
-          <RightUpPointInScoreSheet squares={currentSquares[1]}/>
+          <RightUpPointInScoreSheet squares={currentSquares[3]}/>
         </div>
         </Paper>
       </Box>

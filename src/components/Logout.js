@@ -7,7 +7,7 @@ const Logout = ({ setIsAuth }) => {
   const navigate = useNavigate();
   const logout = () => {
     //ログアウト
-    signOut(auth).then(() => {
+    signOut(auth, provider).then(() => {
       localStorage.clear();
       setIsAuth(false);
       navigate("/login");
