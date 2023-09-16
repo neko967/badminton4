@@ -80,7 +80,7 @@ export default function SinglesScoreboard({leftPlayer, setLeftPlayer, rightPlaye
   }
 
   function calculateWinner () {
-
+    
 
   }
 

@@ -20,10 +20,8 @@ export default function Court( {rightPoint, rightIsServer,
 
     if (isPlayerChanged) {
       setIsPlayerChanged(false);
-      console.log("isPlayerChanged was true to false!");
     } else {
       setIsPlayerChanged(true);
-      console.log("isPlayerChanged was false to true!");
     }
   }
   return (

@@ -13,6 +13,7 @@ import Select from '@mui/material/Select';
 import { useNavigate } from 'react-router-dom';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
+import MakeDoublesTeamDialog from './MakeDoublesTeamDialog.js';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -29,10 +30,11 @@ const names = [
   'ゲストA','ゲストB','ゲストC','ゲストD'
 ];
 
-export default function DialogSelect({ doublesOpen, handleDoublesClose, handleDoublesChange }) {
+export default function DialogSelect({ doublesOpen, handleDoublesClose }) {
   const navigate = useNavigate();
 
   const [personName, setPersonName] = React.useState([]);
+  const [players, setPlayers] = React.useState([]);
 
   const handleChange = (event) => {
     const {
@@ -42,6 +44,20 @@ export default function DialogSelect({ doublesOpen, handleDoublesClose, handleDo
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
+  };
+
+  function handlePlayers (personName) {
+    setPlayers(personName);
+  }
+
+  const [doublesTeamOpen, setDoublesTeamOpen] = React.useState(false);
+  const handleDoublesTeamClickOpen = () => {
+    setDoublesTeamOpen(true);
+  };
+  const handleDoublesTeamClose = (event, reason) => {
+    if (reason !== 'backdropClick') {
+      setDoublesTeamOpen(false);
+    }
   };
 
   return (
@@ -74,9 +90,10 @@ export default function DialogSelect({ doublesOpen, handleDoublesClose, handleDo
         </DialogContent>
         <DialogActions>
           <Button onClick={handleDoublesClose}>Cancel</Button>
-          <Button onClick={() => {handleDoublesClose(); navigate('/doubles')}}>Ok</Button>
+          <Button onClick={() => {handleDoublesClose(); handlePlayers(personName); handleDoublesTeamClickOpen();}}>Ok</Button>
         </DialogActions>
       </Dialog>
+      <MakeDoublesTeamDialog doublesTeamOpen={doublesTeamOpen} handleDoublesTeamClose={handleDoublesTeamClose}/>
     </div>
   );
 }
