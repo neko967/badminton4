@@ -7,7 +7,8 @@ export default function StartButton({ isStart, onStartClick}) {
     <>
     {!isStart && 
       <Button 
-        variant="contained"  
+        variant="contained"
+        size="large"
         sx={{ 
           position: 'fixed', 
           bottom: 60, 
