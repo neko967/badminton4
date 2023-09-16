@@ -17,7 +17,9 @@ import BottomNavigation from './components/BottomNavigation.js';
 import { useState } from 'react';
 
 function App() {
-const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
+  const [leftPlayer, setLeftPlayer] = useState("ゲストA");
+  const [rightPlayer, setRightPlayer] = useState("ゲストB");
 
   return (
     <>
@@ -25,9 +27,9 @@ const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
         <DrawerLeft isAuth={isAuth} setIsAuth={setIsAuth}/>
         <Routes>
           <Route path="/home" element={<Home />} />
-          <Route path="/" element={<Scoreboard isAuth={isAuth}/>} />
-          <Route path="/singles" element={<Singles />} />
-          <Route path="/doubles" element={<Doubles />} />
+          <Route path="/" element={<Scoreboard setLeftPlayer={setLeftPlayer} setRightPlayer={setRightPlayer}/>} />
+          <Route path="/singles" element={<Singles leftPlayer={leftPlayer} setLeftPlayer={setLeftPlayer} rightPlayer={rightPlayer} setRightPlayer={setRightPlayer}/>} />
+          <Route path="/doubles" element={<Doubles leftPlayer={leftPlayer} setLeftPlayer={setLeftPlayer} rightPlayer={rightPlayer} setRightPlayer={setRightPlayer}/>} />
           <Route path="/record" element={<Record />} />
           <Route path="/member" element={<Member />} />
 

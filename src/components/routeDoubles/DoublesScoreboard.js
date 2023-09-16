@@ -7,17 +7,20 @@ import Snackbar from './Snackbar';
 import StartButton from './StartButton';
 import './DoublesScoreboard.css';
 
-export default function Scoreboard() {
+export default function DoublesScoreboard({leftPlayer, setLeftPlayer, rightPlayer, setRightPlayer}) {
   const [leftPoint , setLeftPoint] = useState(0);
-  const [leftIsServer, setLeftIsServer] = useState(false);
+  const [leftIsServer, setLeftIsServer] = useState(true);
+  const [leftSorR, setLeftSorR] =useState("S");
   const [rightPoint , setRightPoint] = useState(0);
-  const [rightIsServer, setRightIsServer] = useState(true);
+  const [rightIsServer, setRightIsServer] = useState(false);
+  const [rightSorR, setRightSorR] =useState("R");
   const [pointHistory, setPointHistory] = useState([[Array(60).fill(null), Array(60).fill(null), Array(60).fill(null), Array(60).fill(null)]]);
   const currentPoints = pointHistory[pointHistory.length - 1];
   const nextPoints = currentPoints.slice();
   const [serverHistory, setServerHistory] = useState([[Array(60).fill(null), Array(60).fill(null)]]);
   const currentServer = serverHistory[serverHistory.length - 1];
   const nextServer = currentServer.slice();
+  const [isStart, setIsStart] = useState(false);
 
   function handleLeftPointClick() {
     setRightIsServer(false);
@@ -25,17 +28,19 @@ export default function Scoreboard() {
     if (isStart) {
       setLeftPoint(leftPoint + 1);
       if (true) {
-        nextPoints[0][leftPoint + rightPoint +1] = leftPoint +1;
+        nextPoints[1][leftPoint + rightPoint +1] = leftPoint +1;
       } else {
         nextPoints[1][leftPoint + rightPoint +1] = leftPoint +1;
       }
-      
       setPointHistory([...pointHistory, [nextPoints[0], nextPoints[1], nextPoints[2], nextPoints[3]]]);
-      setServerHistory([...serverHistory, [nextServer[0], nextServer[1], nextServer[2], nextServer[3]]]);
-    }
+    } else {
+      setLeftSorR("S");
+      setRightSorR("R");
+    } 
   }
 
   function handleRightPointClick() {
+    console.log(serverHistory);
     setRightIsServer(true);
     setLeftIsServer(false);
     if (isStart) {
@@ -47,13 +52,25 @@ export default function Scoreboard() {
       }
       
       setPointHistory([...pointHistory, [nextPoints[0], nextPoints[1], nextPoints[2], nextPoints[3]]]);
+    } else {
+      setLeftSorR("R");
+      setRightSorR("S");
     }
   }
 
-  const [isStart, setIsStart] = useState(false);
   function handleStartClick() {
     setIsStart(true);
-    
+    nextPoints[1][0] = 0;
+    nextPoints[2][0] = 0;
+    setPointHistory([[nextPoints[0], nextPoints[1], nextPoints[2], nextPoints[3]]]);
+    if (leftIsServer) {
+      nextServer[0][0] = true;
+      nextServer[1][0] = false;
+    } else {
+      nextServer[0][0] = false;
+      nextServer[1][0] = true;
+    }
+    setServerHistory([[nextServer[0], nextServer[1]]]);
   }
 
   return (
@@ -68,7 +85,13 @@ export default function Scoreboard() {
           rightIsServer={rightIsServer}
           handleRightPointClick={handleRightPointClick}
         />
-        <ScoreSheet currentSquares={currentPoints}/>
+        <ScoreSheet 
+          currentSquares={currentPoints}
+          leftPlayer={leftPlayer}
+          leftSorR={leftSorR} 
+          rightPlayer={rightPlayer}
+          rightSorR={rightSorR}
+        />
         <StartButton isStart={isStart} onStartClick={handleStartClick}/>
       </Container>
     </div>

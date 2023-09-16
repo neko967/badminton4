@@ -7,7 +7,12 @@ import LeftPoint from './LeftPoint.js';
 import RightPoint from './RightPoint.js';
 import Court from './Court.js';
 
-export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPointClick, rightPoint, rightIsServer, handleRightPointClick, isStart,leftPlayer, setLeftPlayer, rightPlayer, setRightPlayer }) {
+export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPointClick, 
+                                        rightPoint, rightIsServer, handleRightPointClick, 
+                                        isStart,
+                                        leftPlayer, setLeftPlayer, leftSorR, setLeftSorR, 
+                                        rightPlayer, setRightPlayer, rightSorR, setRightSorR, 
+                                        isPlayerChanged, setIsPlayerChanged }) {
 
   const sm_matches = useMediaQuery('(max-width:899px)');
   const md_matches = useMediaQuery('(min-width:900px)');
@@ -25,15 +30,12 @@ export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPoint
           </Grid>
           <Grid xs={12} sm={12}>
             <Court 
-              leftPoint={leftPoint} 
-              leftIsServer={leftIsServer} 
-              rightPoint={rightPoint} 
-              rightIsServer={rightIsServer} 
+              leftPoint={leftPoint} leftIsServer={leftIsServer} 
+              rightPoint={rightPoint} rightIsServer={rightIsServer} 
               isStart={isStart}
-              leftPlayer={leftPlayer}
-              setLeftPlayer={setLeftPlayer}
-              rightPlayer={rightPlayer}
-              setRightPlayer={setRightPlayer}
+              leftPlayer={leftPlayer} setLeftPlayer={setLeftPlayer} leftSorR={leftSorR} setLeftSorR={setLeftSorR}
+              rightPlayer={rightPlayer} setRightPlayer={setRightPlayer} rightSorR={rightSorR} setRightSorR={setRightSorR}
+              isPlayerChanged={isPlayerChanged} setIsPlayerChanged={setIsPlayerChanged}
             />
           </Grid>
         </>
@@ -44,15 +46,12 @@ export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPoint
           </Grid>
           <Grid md={7}>
             <Court 
-              leftPoint={leftPoint} 
-              leftIsServer={leftIsServer} 
-              rightPoint={rightPoint} 
-              rightIsServer={rightIsServer} 
+              leftPoint={leftPoint} leftIsServer={leftIsServer} 
+              rightPoint={rightPoint} rightIsServer={rightIsServer} 
               isStart={isStart}
-              leftPlayer={leftPlayer}
-              setLeftPlayer={setLeftPlayer}
-              rightPlayer={rightPlayer}
-              setRightPlayer={setRightPlayer}
+              leftPlayer={leftPlayer} setLeftPlayer={setLeftPlayer} leftSorR={leftSorR} setLeftSorR={setLeftSorR}
+              rightPlayer={rightPlayer} setRightPlayer={setRightPlayer} rightSorR={rightSorR} setRightSorR={setRightSorR}
+              isPlayerChanged={isPlayerChanged} setIsPlayerChanged={setIsPlayerChanged}
             />
           </Grid>
           <Grid md={2.5}>

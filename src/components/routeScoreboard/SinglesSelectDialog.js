@@ -29,7 +29,7 @@ const names = [
   'ゲストA','ゲストB','ゲストC','ゲストD'
 ];
 
-export default function DialogSelect({ age, singlesOpen, handleSinglesClose, handleSinglesChange }) {
+export default function DialogSelect({ singlesOpen, handleSinglesClose, setLeftPlayer, setRightPlayer }) {
   const navigate = useNavigate();
 
   const [personName, setPersonName] = React.useState([]);
@@ -43,6 +43,11 @@ export default function DialogSelect({ age, singlesOpen, handleSinglesClose, han
       typeof value === 'string' ? value.split(',') : value,
     );
   };
+
+  function setPlayers (personName) {
+    setLeftPlayer(personName[0]);
+    setRightPlayer(personName[1]);
+  }
 
   return (
     <div>
@@ -74,7 +79,7 @@ export default function DialogSelect({ age, singlesOpen, handleSinglesClose, han
         </DialogContent>
         <DialogActions>
           <Button onClick={handleSinglesClose}>Cancel</Button>
-          <Button onClick={() => {handleSinglesClose(); navigate('/singles')}}>Ok</Button>
+          <Button onClick={() => {handleSinglesClose(); navigate('/singles'); setPlayers(personName); }}>Ok</Button>
         </DialogActions>
       </Dialog>
     </div>

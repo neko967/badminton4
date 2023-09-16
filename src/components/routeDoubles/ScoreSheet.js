@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 
-export default function ScoreSheet ({currentSquares}) {
+export default function ScoreSheet ({currentSquares, leftPlayer, leftSorR, rightPlayer, rightSorR }) {
 
   return (
     <div className="scoreSheet">
@@ -11,18 +11,18 @@ export default function ScoreSheet ({currentSquares}) {
         <Paper variant="outlined" square>
         <div className="board-row">
           <button className="doublesNameSquare">Player A</button>
-          <button className="doublesSquare">S</button>
+          <button className="doublesSquare"></button>
           <LeftUpPointInScoreSheet squares={currentSquares[0]}/>
         </div>
         <div className="board-row">
           <button className="doublesNameSquare">Player B</button>
-          <button className="doublesSquare"></button>
+          <button className="doublesSquare">{leftSorR}</button>
           <LeftUpPointInScoreSheet squares={currentSquares[1]}/>
         </div>
         <Divider />
         <div className="board-row">
           <button className="doublesNameSquare">Player C</button>
-          <button className="doublesSquare">R</button>
+          <button className="doublesSquare">{rightSorR}</button>
           <RightUpPointInScoreSheet squares={currentSquares[2]}/>
         </div>
         <div className="board-row">

@@ -3,21 +3,21 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 
-export default function ScoreSheet ({ currentSquares,leftPlayer, leftSorR, rightPlayer, rightSorR }) {
+export default function ScoreSheet ({ currentSquares, leftPlayer, leftSorR, rightPlayer, rightSorR, isPlayerChanged }) {
 
   return (
     <div className="scoreSheet">
       <Box sx={{ display: 'fix', flexWrap: 'wrap', '& > :not(style)': { m: 1, width: 1800, height: 112, }, }} >
         <Paper variant="outlined" square>
         <div className="board-row">
-          <button className="singlesNameSquare">{leftPlayer}</button>
-          <button className="singlesSquare">{leftSorR}</button>
+          <UpPlayerInScoreSheet leftPlayer={leftPlayer} rightPlayer={rightPlayer} isPlayerChanged={isPlayerChanged}/>
+          <UpSorR leftSorR={leftSorR}/>
           <LeftUpPointInScoreSheet squares={currentSquares[0]}/>
         </div>
         <Divider />
         <div className="board-row">
-          <button className="singlesNameSquare">{rightPlayer}</button>
-          <button className="singlesSquare">{rightSorR}</button>
+          <DownPlayerInScoreSheet leftPlayer={leftPlayer} rightPlayer={rightPlayer} isPlayerChanged={isPlayerChanged}/>
+          <DownSorR rightSorR={rightSorR}/>
           <RightUpPointInScoreSheet squares={currentSquares[1]}/>
         </div>
         </Paper>
@@ -26,8 +26,44 @@ export default function ScoreSheet ({ currentSquares,leftPlayer, leftSorR, right
   );
 }
 
-function PlayerInScoreSheet () {
+function UpPlayerInScoreSheet ({leftPlayer, rightPlayer, isPlayerChanged}) {
+  return (
+    <>
+      {!isPlayerChanged ? 
+        <button className="singlesNameSquare">{leftPlayer}</button>
+        :
+        <button className="singlesNameSquare">{rightPlayer}</button>
+      }
+    </>
+  );
+}
 
+function UpSorR ({leftSorR}) {
+  return (
+    <>
+      <button className="singlesSquare">{leftSorR}</button>
+    </>
+  );
+}
+
+function DownPlayerInScoreSheet ({leftPlayer, rightPlayer, isPlayerChanged}) {
+  return (
+    <>
+      {!isPlayerChanged ? 
+        <button className="singlesNameSquare">{rightPlayer}</button>
+        :
+        <button className="singlesNameSquare">{leftPlayer}</button>
+      }
+    </>
+  );
+}
+
+function DownSorR ({rightSorR}) {
+  return (
+    <>
+      <button className="singlesSquare">{rightSorR}</button>
+    </>
+  );
 }
 
 function LeftUpPointInScoreSheet ({squares})  {

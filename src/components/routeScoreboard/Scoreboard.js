@@ -7,7 +7,7 @@ import SpeedDialTooltipOpen from './SpeedDialTooltipOpen.js';
 import Snackbar from './Snackbar';
 import './Scoreboard.css';
 
-export default function Scoreboard({ isAuth }) {
+export default function Scoreboard({ setLeftPlayer, setRightPlayer }) {
   const [leftPoint , setLeftPoint] = useState(0);
   const [leftIsServer, setLeftIsServer] = useState(false);
   const [rightPoint , setRightPoint] = useState(0);
@@ -46,7 +46,7 @@ export default function Scoreboard({ isAuth }) {
           handleRightPointClick={handleRightPointClick}
         />
         <ScoreSheet currentSquares={currentSquares}/>
-        <SpeedDialTooltipOpen/>
+        <SpeedDialTooltipOpen setLeftPlayer={setLeftPlayer} setRightPlayer={setRightPlayer}/>
       </Container>
     </div>
   );

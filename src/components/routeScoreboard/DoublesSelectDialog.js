@@ -29,7 +29,7 @@ const names = [
   'ゲストA','ゲストB','ゲストC','ゲストD'
 ];
 
-export default function DialogSelect({ age, doublesOpen, handleDoublesClose, handleDoublesChange }) {
+export default function DialogSelect({ doublesOpen, handleDoublesClose, handleDoublesChange }) {
   const navigate = useNavigate();
 
   const [personName, setPersonName] = React.useState([]);

@@ -5,11 +5,26 @@ import Fab from '@mui/material/Fab';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 
 
-export default function Court( {rightPoint, rightIsServer, leftPoint, leftIsServer, isStart, leftPlayer, setLeftPlayer, rightPlayer, setRightPlayer }) {
+export default function Court( {rightPoint, rightIsServer, 
+                                leftPoint, leftIsServer, 
+                                isStart, 
+                                leftPlayer, setLeftPlayer, leftSorR, setLeftSorR,
+                                rightPlayer, setRightPlayer, rightSorR, setRightSorR,
+                                isPlayerChanged, setIsPlayerChanged }) {
 
   function handlePlayerChange () {
     setLeftPlayer(rightPlayer);
     setRightPlayer(leftPlayer);
+    setLeftSorR(rightSorR);
+    setRightSorR(leftSorR);
+
+    if (isPlayerChanged) {
+      setIsPlayerChanged(false);
+      console.log("isPlayerChanged was true to false!");
+    } else {
+      setIsPlayerChanged(true);
+      console.log("isPlayerChanged was false to true!");
+    }
   }
   return (
     <div>
@@ -27,7 +42,7 @@ export default function Court( {rightPoint, rightIsServer, leftPoint, leftIsServ
                 aria-label="add" 
                 line-height="100" 
                 sx={{ mt: {xs:9.5, sm:14.5, md:19.5} }}
-                onClick={handlePlayerChange}
+                onClick={() => handlePlayerChange()}
               >
                 <SwapHorizIcon/>
               </Fab>

@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import SinglesSelectDialog from './SinglesSelectDialog';
 import DoublesSelectDialog from './DoublesSelectDialog';
 
-export default function SpeedDialTooltipOpen() {
+export default function SpeedDialTooltipOpen({ setLeftPlayer, setRightPlayer }) {
   const [dialOpen, setDialOpen] = React.useState(false);
   const handleDialOpen = () => setDialOpen(true);
   const handleDialClose = () => setDialOpen(false);
@@ -21,10 +21,6 @@ export default function SpeedDialTooltipOpen() {
   ];
 
   const [singlesOpen, setSinglesOpen] = React.useState(false);
-  const [age, setAge] = React.useState('');
-  const handleSinglesChange = (event) => {
-    setAge(Number(event.target.value) || '');
-  };
   const handleSinglesClickOpen = () => {
     setSinglesOpen(true);
   };
@@ -35,9 +31,6 @@ export default function SpeedDialTooltipOpen() {
   };
 
   const [doublesOpen, setDoublesOpen] = React.useState(false);
-  const handleDoublesChange = (event) => {
-    setAge(Number(event.target.value) || '');
-  };
   const handleDoublesClickOpen = () => {
     setDoublesOpen(true);
   };
@@ -71,16 +64,14 @@ export default function SpeedDialTooltipOpen() {
       </SpeedDial>
     </Box>
     <SinglesSelectDialog 
-      age={age} 
       singlesOpen={singlesOpen} 
       handleSinglesClose={handleSinglesClose} 
-      handleSinglesChange={handleSinglesChange}
+      setLeftPlayer={setLeftPlayer}
+      setRightPlayer={setRightPlayer}
     />
     <DoublesSelectDialog 
-      age={age} 
       doublesOpen={doublesOpen} 
       handleDoublesClose={handleDoublesClose} 
-      handleDoublesChange={handleDoublesChange}
     />
   </>
   );
