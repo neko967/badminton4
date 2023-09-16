@@ -57,10 +57,16 @@ export default function Scoreboard() {
     setPointHistory([[nextPoints[0], nextPoints[1]]]);
   }
 
+  const [leftPlayer, setLeftPlayer] = useState("PlayerA");
+  const [rightPlayer, setRightPlayer] = useState("PlayerB");
+
   return (
     <div className="App">
       <Container maxWidth="lg" sx={{marginTop: {xs:7.5, sm:8.5}}}>
-        <Player />
+        <Player 
+          leftPlayer={leftPlayer}
+          rightPlayer={rightPlayer}
+        />
         <PointAndCourt
           leftPoint={leftPoint} 
           leftIsServer={leftIsServer}
@@ -69,8 +75,18 @@ export default function Scoreboard() {
           rightIsServer={rightIsServer}
           handleRightPointClick={handleRightPointClick}
           isStart={isStart}
+          leftPlayer={leftPlayer}
+          setLeftPlayer={setLeftPlayer}
+          rightPlayer={rightPlayer}
+          setRightPlayer={setRightPlayer}
         />
-        <ScoreSheet currentSquares={currentPoints} leftSorR={leftSorR} rightSorR={rightSorR}/>
+        <ScoreSheet 
+          currentSquares={currentPoints} 
+          leftPlayer={leftPlayer}
+          leftSorR={leftSorR} 
+          rightPlayer={rightPlayer}
+          rightSorR={rightSorR}
+        />
         <StartButton isStart={isStart} onStartClick={handleStartClick}/>
       </Container>
     </div>

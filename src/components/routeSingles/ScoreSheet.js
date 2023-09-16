@@ -3,20 +3,20 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 
-export default function ScoreSheet ({currentSquares, leftSorR, rightSorR}) {
+export default function ScoreSheet ({ currentSquares,leftPlayer, leftSorR, rightPlayer, rightSorR }) {
 
   return (
     <div className="scoreSheet">
       <Box sx={{ display: 'fix', flexWrap: 'wrap', '& > :not(style)': { m: 1, width: 1800, height: 112, }, }} >
         <Paper variant="outlined" square>
         <div className="board-row">
-          <button className="singlesNameSquare">Player A</button>
+          <button className="singlesNameSquare">{leftPlayer}</button>
           <button className="singlesSquare">{leftSorR}</button>
           <LeftUpPointInScoreSheet squares={currentSquares[0]}/>
         </div>
         <Divider />
         <div className="board-row">
-          <button className="singlesNameSquare">Player C</button>
+          <button className="singlesNameSquare">{rightPlayer}</button>
           <button className="singlesSquare">{rightSorR}</button>
           <RightUpPointInScoreSheet squares={currentSquares[1]}/>
         </div>
