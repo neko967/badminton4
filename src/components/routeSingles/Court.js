@@ -1,9 +1,11 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
+import Fab from '@mui/material/Fab';
+import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 
 
-export default function Court( {rightPoint, rightIsServer, leftPoint, leftIsServer }) {
+export default function Court( {rightPoint, rightIsServer, leftPoint, leftIsServer, isStart }) {
 
   return (
     <div>
@@ -14,6 +16,11 @@ export default function Court( {rightPoint, rightIsServer, leftPoint, leftIsServ
             <LeftDownCourt leftPoint={leftPoint} leftIsServer={leftIsServer}/>
           </Grid>
           <Grid xs={2}>
+            {!isStart &&
+              <Fab size="small" color="secondary" aria-label="add" line-height="100" sx={{ mt: {xs:9.5, sm:14.5, md:19.5} }}>
+                <SwapHorizIcon/>
+              </Fab>
+            }
           </Grid>
           <Grid xs={5}>
             <RightUpCourt rightPoint={rightPoint} rightIsServer={rightIsServer}/>

@@ -53,8 +53,7 @@ export default function Scoreboard() {
   const [isStart, setIsStart] = useState(false);
   function handleStartClick() {
     setIsStart(true);
-    setLeftIsServer(true);
-    setRightIsServer(false);
+    
   }
 
   return (

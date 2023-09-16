@@ -7,7 +7,7 @@ import LeftPoint from './LeftPoint.js';
 import RightPoint from './RightPoint.js';
 import Court from './Court.js';
 
-export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPointClick, rightPoint, rightIsServer, handleRightPointClick }) {
+export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPointClick, rightPoint, rightIsServer, handleRightPointClick, isStart }) {
 
   const sm_matches = useMediaQuery('(max-width:899px)');
   const md_matches = useMediaQuery('(min-width:900px)');
@@ -24,7 +24,7 @@ export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPoint
           <RightPoint rightPoint={rightPoint} rightIsServer={rightIsServer} onPointClick={handleRightPointClick}/>
           </Grid>
           <Grid xs={12} sm={12}>
-            <Court leftPoint={leftPoint} leftIsServer={leftIsServer} rightPoint={rightPoint} rightIsServer={rightIsServer}/>
+            <Court leftPoint={leftPoint} leftIsServer={leftIsServer} rightPoint={rightPoint} rightIsServer={rightIsServer} isStart={isStart}/>
           </Grid>
         </>
         }
@@ -33,7 +33,7 @@ export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPoint
             <LeftPoint leftPoint={leftPoint} leftIsServer={leftIsServer} onPointClick={handleLeftPointClick}/>
           </Grid>
           <Grid md={7}>
-            <Court leftPoint={leftPoint} leftIsServer={leftIsServer} rightPoint={rightPoint} rightIsServer={rightIsServer}/>
+            <Court leftPoint={leftPoint} leftIsServer={leftIsServer} rightPoint={rightPoint} rightIsServer={rightIsServer} isStart={isStart}/>
           </Grid>
           <Grid md={2.5}>
             <RightPoint rightPoint={rightPoint} rightIsServer={rightIsServer} onPointClick={handleRightPointClick}/>
