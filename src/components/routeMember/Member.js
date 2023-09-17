@@ -37,11 +37,14 @@ function createData(name, calories, fat, carbs) {
 }
 
 const rows = [
-  createData('山田太郎', '〇〇高校', '58%', 2036),
-  createData('斎藤佑樹', '〇〇高校', '47%', 1987),
-  createData('Eclair', 262, 16.0, 24),
-  createData('Cupcake', 305, 3.7, 67),
-  createData('丸岡花子', 356, 16.0, 49),
+  createData('ゲストA', '〇〇高校', '58%', 2036),
+  createData('ゲストB', '〇〇高校', '47%', 1987),
+  createData('ゲストC', '〇〇高校', '64%', 2134),
+  createData('ゲストD', '〇〇高校', '50%', 2000),
+  createData('ゲストE', '〇〇高校', '43%', 1964),
+  createData('ゲストF', '〇〇高校', '55%', 2025),
+  createData('ゲストG', '〇〇高校', '45%', 1975),
+  createData('ゲストH', '〇〇高校', '41%', 1932),
 ];
 
 export default function Members() {
