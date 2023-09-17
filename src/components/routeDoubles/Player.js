@@ -4,7 +4,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 
-export default function Player() {
+export default function Player({ leftUpPlayer, leftDownPlayer, rightUpPlayer, rightDownPlayer }) {
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -18,16 +18,16 @@ export default function Player() {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={1}>
         <Grid xs={3}>
-          <Item>Player A</Item>
+          <Item>{leftUpPlayer}</Item>
         </Grid>
         <Grid xs={3}>
-          <Item>Player B</Item>
+          <Item>{leftDownPlayer}</Item>
         </Grid>
         <Grid xs={3}>
-          <Item>Player C</Item>
+          <Item>{rightUpPlayer}</Item>
         </Grid>
         <Grid xs={3}>
-          <Item>Player D</Item>
+          <Item>{rightDownPlayer}</Item>
         </Grid>
       </Grid>
     </Box>

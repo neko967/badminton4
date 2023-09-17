@@ -26,7 +26,7 @@ const MenuProps = {
 };
 
 const names = [
-  'ゲストA','ゲストB','ゲストC','ゲストD'
+  'ゲストA','ゲストB','ゲストC','ゲストD', 'ゲストE','ゲストF','ゲストG','ゲストH'
 ];
 
 export default function DialogSelect({ singlesOpen, handleSinglesClose, setLeftPlayer, setRightPlayer }) {
@@ -52,11 +52,11 @@ export default function DialogSelect({ singlesOpen, handleSinglesClose, setLeftP
   return (
     <div>
       <Dialog disableEscapeKeyDown open={singlesOpen} onClose={handleSinglesClose}>
-        <DialogTitle>出場選手を選んでください</DialogTitle>
+        <DialogTitle>2人選んでください</DialogTitle>
         <DialogContent>
           <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap' }}>
             <FormControl sx={{ m: 1, width: 300 }}>
-              <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
+              <InputLabel id="demo-multiple-checkbox-label">シングルス</InputLabel>
               <Select
                 labelId="demo-multiple-checkbox-label"
                 id="demo-multiple-checkbox"

@@ -9,17 +9,18 @@ import Record from './components/routeRecord/Records';
 import Member from './components/routeMember/Members';
 import Homey from './components/Homey';
 import CreatePost from './components/CreatePost';
-import Login from './components/Login';
-import Logout from './components/Logout';
 import DrawerLeft from './components/DrawerLeft.js';
-import Navbar from './components/Navbar';
 import BottomNavigation from './components/BottomNavigation.js';
 import { useState } from 'react';
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
-  const [leftPlayer, setLeftPlayer] = useState("ゲストA");
-  const [rightPlayer, setRightPlayer] = useState("ゲストB");
+  const [singlesLeftPlayer, setSinglesLeftPlayer] = useState("ゲストA");
+  const [singlesRightPlayer, setSinglesRightPlayer] = useState("ゲストB");
+  const [doublesLeftUpPlayer, setDoublesLeftUpPlayer] = useState("ゲストA");
+  const [doublesLeftDownPlayer, setDoublesLeftDownPlayer] = useState("ゲストB");
+  const [doublesRightUpPlayer, setDoublesRightUpPlayer] = useState("ゲストC");
+  const [doublesRightDownPlayer, setDoublesRightDownPlayer] = useState("ゲストD");
 
   return (
     <>
@@ -27,9 +28,30 @@ function App() {
         <DrawerLeft isAuth={isAuth} setIsAuth={setIsAuth}/>
         <Routes>
           <Route path="/home" element={<Home />} />
-          <Route path="/" element={<Scoreboard setLeftPlayer={setLeftPlayer} setRightPlayer={setRightPlayer}/>} />
-          <Route path="/singles" element={<Singles leftPlayer={leftPlayer} setLeftPlayer={setLeftPlayer} rightPlayer={rightPlayer} setRightPlayer={setRightPlayer}/>} />
-          <Route path="/doubles" element={<Doubles leftPlayer={leftPlayer} setLeftPlayer={setLeftPlayer} rightPlayer={rightPlayer} setRightPlayer={setRightPlayer}/>} />
+          <Route path="/" element={<Scoreboard setSinglesLeftPlayer={setSinglesLeftPlayer} 
+                                               setSinglesRightPlayer={setSinglesRightPlayer}
+                                               setDoublesLeftUpPlayer={setDoublesLeftUpPlayer}
+                                               setDoublesLeftDownPlayer={setDoublesLeftDownPlayer}
+                                               setDoublesRightUpPlayer={setDoublesRightUpPlayer}
+                                               setDoublesRightDownPlayer={setDoublesRightDownPlayer}
+                                   />}
+          />
+          <Route path="/singles" element={<Singles leftPlayer={singlesLeftPlayer} 
+                                                   setLeftPlayer={setSinglesLeftPlayer} 
+                                                   rightPlayer={singlesRightPlayer} 
+                                                   setRightPlayer={setSinglesRightPlayer}
+                                          />}
+          />
+          <Route path="/doubles" element={<Doubles doublesLeftUpPlayer={doublesLeftUpPlayer} 
+                                                   setDoublesLeftUpPlayer={setDoublesLeftUpPlayer}
+                                                   doublesLeftDownPlayer={doublesLeftDownPlayer}
+                                                   setDoublesLeftDownPlayer={setDoublesLeftDownPlayer}
+                                                   doublesRightUpPlayer={doublesRightUpPlayer}
+                                                   setDoublesRightUpPlayer={setDoublesRightUpPlayer}
+                                                   doublesRightDownPlayer={doublesRightDownPlayer}
+                                                   setDoublesRightDownPlayer={setDoublesRightDownPlayer}
+                                          />}
+          />
           <Route path="/record" element={<Record />} />
           <Route path="/member" element={<Member />} />
 

@@ -29,8 +29,16 @@ export default function Court( {rightPoint, rightIsServer,
       <Box sx={{ height: {xs:200, sm:280, md:360}, backgroundColor: 'white', mt: 0.5 }}>
         <Grid container spacing={1}>
           <Grid xs={5}>
-            <LeftUpCourt leftPoint={leftPoint} leftIsServer={leftIsServer} leftPlayer={leftPlayer} rightPoint={rightPoint}/>
-            <LeftDownCourt leftPoint={leftPoint} leftIsServer={leftIsServer} leftPlayer={leftPlayer} rightPoint={rightPoint}/>
+            <LeftUpCourt leftPoint={leftPoint} 
+                         leftIsServer={leftIsServer} 
+                         leftPlayer={leftPlayer} 
+                         rightPoint={rightPoint}
+            />
+            <LeftDownCourt leftPoint={leftPoint} 
+                           leftIsServer={leftIsServer} 
+                           leftPlayer={leftPlayer} 
+                           rightPoint={rightPoint}
+            />
           </Grid>
           <Grid xs={2}>
             {!isStart &&
@@ -47,8 +55,16 @@ export default function Court( {rightPoint, rightIsServer,
             }
           </Grid>
           <Grid xs={5}>
-            <RightUpCourt rightPoint={rightPoint} rightIsServer={rightIsServer} rightPlayer={rightPlayer} leftPoint={leftPoint}/>
-            <RightDownCourt rightPoint={rightPoint} rightIsServer={rightIsServer} rightPlayer={rightPlayer} leftPoint={leftPoint}/>
+            <RightUpCourt rightPoint={rightPoint} 
+                          rightIsServer={rightIsServer} 
+                          rightPlayer={rightPlayer} 
+                          leftPoint={leftPoint}
+            />
+            <RightDownCourt rightPoint={rightPoint} 
+                            rightIsServer={rightIsServer} 
+                            rightPlayer={rightPlayer} 
+                            leftPoint={leftPoint}
+            />
           </Grid>
         </Grid>
       </Box>

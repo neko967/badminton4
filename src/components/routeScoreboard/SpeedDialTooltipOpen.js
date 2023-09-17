@@ -6,11 +6,12 @@ import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
 import PersonIcon from '@mui/icons-material/Person';
 import PeopleIcon from '@mui/icons-material/People';
-import { useNavigate } from 'react-router-dom';
 import SinglesSelectDialog from './SinglesSelectDialog';
 import DoublesSelectDialog from './DoublesSelectDialog';
 
-export default function SpeedDialTooltipOpen({ setLeftPlayer, setRightPlayer }) {
+export default function SpeedDialTooltipOpen({ setSinglesLeftPlayer, setSinglesRightPlayer,
+                                               setDoublesLeftUpPlayer, setDoublesLeftDownPlayer,
+                                               setDoublesRightUpPlayer, setDoublesRightDownPlayer }) {
   const [dialOpen, setDialOpen] = React.useState(false);
   const handleDialOpen = () => setDialOpen(true);
   const handleDialClose = () => setDialOpen(false);
@@ -66,12 +67,16 @@ export default function SpeedDialTooltipOpen({ setLeftPlayer, setRightPlayer }) 
     <SinglesSelectDialog 
       singlesOpen={singlesOpen} 
       handleSinglesClose={handleSinglesClose} 
-      setLeftPlayer={setLeftPlayer}
-      setRightPlayer={setRightPlayer}
+      setLeftPlayer={setSinglesLeftPlayer}
+      setRightPlayer={setSinglesRightPlayer}
     />
     <DoublesSelectDialog 
       doublesOpen={doublesOpen} 
       handleDoublesClose={handleDoublesClose} 
+      setLeftUpPlayer={setDoublesLeftUpPlayer}
+      setLeftDownPlayer={setDoublesLeftDownPlayer}
+      setRightUpPlayer={setDoublesRightUpPlayer}
+      setRightDownPlayer={setDoublesRightDownPlayer}
     />
   </>
   );

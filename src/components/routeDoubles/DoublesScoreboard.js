@@ -7,7 +7,10 @@ import Snackbar from './Snackbar';
 import StartButton from './StartButton';
 import './DoublesScoreboard.css';
 
-export default function DoublesScoreboard({leftPlayer, setLeftPlayer, rightPlayer, setRightPlayer}) {
+export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftUpPlayer,
+                                            doublesLeftDownPlayer, setDoublesLeftDownPlayer,
+                                            doublesRightUpPlayer, setDoublesRightUpPlayer, 
+                                            doublesRightDownPlayer, setDoublesRightDownPlayer }) {
   const [leftPoint , setLeftPoint] = useState(0);
   const [leftIsServer, setLeftIsServer] = useState(true);
   const [leftSorR, setLeftSorR] =useState("S");
@@ -40,7 +43,6 @@ export default function DoublesScoreboard({leftPlayer, setLeftPlayer, rightPlaye
   }
 
   function handleRightPointClick() {
-    console.log(serverHistory);
     setRightIsServer(true);
     setLeftIsServer(false);
     if (isStart) {
@@ -76,21 +78,20 @@ export default function DoublesScoreboard({leftPlayer, setLeftPlayer, rightPlaye
   return (
     <div className="App">
       <Container maxWidth="lg" sx={{marginTop: {xs:7.5, sm:8.5}}}>
-        <Player />
-        <PointAndCourt
-          leftPoint={leftPoint} 
-          leftIsServer={leftIsServer}
-          handleLeftPointClick={handleLeftPointClick}
-          rightPoint={rightPoint} 
-          rightIsServer={rightIsServer}
-          handleRightPointClick={handleRightPointClick}
+        <Player leftUpPlayer={doublesLeftUpPlayer} leftDownPlayer={doublesLeftDownPlayer} 
+                rightUpPlayer={doublesRightUpPlayer} rightDownPlayer={doublesRightDownPlayer}
+        />
+        <PointAndCourt leftPoint={leftPoint} leftIsServer={leftIsServer}
+                       handleLeftPointClick={handleLeftPointClick}
+                       rightPoint={rightPoint} rightIsServer={rightIsServer}
+                       handleRightPointClick={handleRightPointClick}
+                       leftUpPlayer={doublesLeftUpPlayer} leftDownPlayer={doublesLeftDownPlayer} 
+                       rightUpPlayer={doublesRightUpPlayer} rightDownPlayer={doublesRightDownPlayer}
         />
         <ScoreSheet 
           currentSquares={currentPoints}
-          leftPlayer={leftPlayer}
-          leftSorR={leftSorR} 
-          rightPlayer={rightPlayer}
-          rightSorR={rightSorR}
+          leftUpPlayer={doublesLeftUpPlayer} leftDownPlayer={doublesLeftDownPlayer}  leftSorR={leftSorR} 
+          rightUpPlayer={doublesRightUpPlayer} rightDownPlayer={doublesRightDownPlayer} rightSorR={rightSorR}
         />
         <StartButton isStart={isStart} onStartClick={handleStartClick}/>
       </Container>
