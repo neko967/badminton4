@@ -29,6 +29,8 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
   const [isHorizPlayerChanged, setIsHorizPlayerChanged] = useState(false);
   const [isLeftVertPlayerChanged, setIsLeftvertPlayerChanged] = useState(false);
   const [isRightVertPlayerChanged, setIsRightVertPlayerChanged] = useState(false);
+  const [leftConsecutivePointSwitch, setLeftConsecutivePointSwitchSwitch] = useState(false);
+  const [rightConsecutivePointSwitch, setRightConsecutivePointSwitchSwitch] = useState(false);
   let Players = Object.assign({}, [doublesLeftUpPlayer, doublesLeftDownPlayer, doublesRightUpPlayer, doublesRightDownPlayer] )
 
   function handleLeftPointClick() {
@@ -80,6 +82,11 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
           setDoublesLeftDownPlayer(doublesLeftUpPlayer);
           setManipulated_0(manipulated_1);
           setManipulated_1(manipulated_0);
+        }
+        if (leftConsecutivePointSwitch) {
+          setLeftConsecutivePointSwitchSwitch(false);
+        } else {
+          setLeftConsecutivePointSwitchSwitch(true);
         }
       }
     }
@@ -135,6 +142,11 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
           setManipulated_2(manipulated_3);
           setManipulated_3(manipulated_2);
         }
+        if (rightConsecutivePointSwitch) {
+          setRightConsecutivePointSwitchSwitch(false);
+        } else {
+          setRightConsecutivePointSwitchSwitch(true);
+        }
       }
     } 
   }
@@ -178,6 +190,8 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
       <Container maxWidth="lg" sx={{marginTop: {xs:7.5, sm:8.5}}}>
         <Player leftUpPlayer={doublesLeftUpPlayer} leftDownPlayer={doublesLeftDownPlayer} 
                 rightUpPlayer={doublesRightUpPlayer} rightDownPlayer={doublesRightDownPlayer}
+                leftConsecutivePointSwitch={leftConsecutivePointSwitch}
+                rightConsecutivePointSwitch={rightConsecutivePointSwitch}
         />
         <PointAndCourt leftPoint={leftPoint} leftIsServer={leftIsServer}
                        handleLeftPointClick={handleLeftPointClick}
