@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from '@mui/material/Container';
 import Player from './Player.js';
 import PointAndCourt from './PointAndCourt.js';
 import ScoreSheet from './ScoreSheet.js';
-import Snackbar from './Snackbar';
 import StartButton from './StartButton';
 import './DoublesScoreboard.css';
+import Call from './Call.js';
 
 export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftUpPlayer,
                                             doublesLeftDownPlayer, setDoublesLeftDownPlayer,
@@ -33,6 +33,8 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
   const [rightConsecutivePointSwitch, setRightConsecutivePointSwitchSwitch] = useState(false);
   let Players = Object.assign({}, [doublesLeftUpPlayer, doublesLeftDownPlayer, doublesRightUpPlayer, doublesRightDownPlayer] )
   const [deuce, setDeuce] = useState(false);
+  const [snackPack, setSnackPack] = useState([]);
+  const [message, setMessage] = useState("選手の位置とサーバーを決めてください");
 
   function handleLeftPointClick() {
     if ((leftPoint===21 || rightPoint===21) && !deuce) {
@@ -91,6 +93,19 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
       if (leftPoint===20 && rightPoint===20) {
         setDeuce(true);
       }
+      if (leftIsServer) {
+        if (leftPoint +1 === rightPoint) {
+          setMessage(`${leftPoint + 1}. All`);
+        } else {
+          setMessage(`${leftPoint + 1}. ${rightPoint}`);
+        }
+      } else {
+        if (leftPoint +1 === rightPoint) {
+          setMessage(`Service over. ${leftPoint + 1}. All`);
+        } else {
+          setMessage(`Service over. ${leftPoint + 1}. ${rightPoint}`);
+        }
+      }
     }
   }
 
@@ -142,7 +157,6 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
       }
       setPointHistory([...pointHistory, [nextPoints[0], nextPoints[1], nextPoints[2], nextPoints[3]]]);
       if (rightIsServer) {
-        
         if (rightConsecutivePointSwitch) {
           setRightConsecutivePointSwitchSwitch(false);
         } else {
@@ -152,8 +166,42 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
       if (leftPoint===20 && rightPoint===20) {
         setDeuce(true);
       }
+      if (leftIsServer) {
+        if (leftPoint +1 === rightPoint) {
+          setMessage(`${leftPoint + 1}. All`);
+        } else {
+          setMessage(`${leftPoint + 1}. ${rightPoint}`);
+        }
+      } else {
+        if (leftPoint +1 === rightPoint) {
+          setMessage(`Service over. ${leftPoint + 1}. All`);
+        } else {
+          setMessage(`Service over. ${leftPoint + 1}. ${rightPoint}`);
+        }
+      }
+      if (rightIsServer) {
+        if (rightPoint +1 === leftPoint) {
+          setMessage(`${rightPoint + 1}. All`);
+        } else {
+          setMessage(`${rightPoint + 1}. ${leftPoint}`);
+        }
+      } else {
+        if (rightPoint +1 === leftPoint) {
+          setMessage(`Service over. ${rightPoint + 1}. All`);
+        } else {
+          setMessage(`Service over. ${rightPoint + 1}. ${leftPoint}`);
+        }
+      }
     }
   }
+
+  useEffect(() => {
+    handleCallClick(message);
+  }, [message])
+
+  function handleCallClick (message) {
+    setSnackPack((prev) => [...prev, { message, key: new Date().getTime() }]);
+  };
 
   function handleStartClick() {
     setIsStart(true);
@@ -187,6 +235,7 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
       }
     }
     setSorRHistory([[nextSorR[0], nextSorR[1], nextSorR[2], nextSorR[3]]]);
+    setMessage("Love All. Play");
   }
 
   return (
@@ -225,6 +274,7 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
           isRightVertPlayerChanged={isRightVertPlayerChanged}
         />
         <StartButton isStart={isStart} onStartClick={handleStartClick}/>
+        <Call snackPack={snackPack} setSnackPack={setSnackPack}/>
       </Container>
     </div>
   );

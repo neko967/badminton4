@@ -1,15 +1,14 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
+import React, { useEffect, useState } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 
-export default function ConsecutiveSnackbars() {
-  const [snackPack, setSnackPack] = React.useState([]);
-  const [open, setOpen] = React.useState(false);
-  const [messageInfo, setMessageInfo] = React.useState(undefined);
+export default function Call({snackPack, setSnackPack}) {
+  
+  const [open, setOpen] = useState(false);
+  const [messageInfo, setMessageInfo] = useState(undefined);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (snackPack.length && !messageInfo) {
       // Set a new snack when we don't have an active one
       setMessageInfo({ ...snackPack[0] });
@@ -20,10 +19,6 @@ export default function ConsecutiveSnackbars() {
       setOpen(false);
     }
   }, [snackPack, messageInfo, open]);
-
-  const handleClick = (message) => () => {
-    setSnackPack((prev) => [...prev, { message, key: new Date().getTime() }]);
-  };
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -36,10 +31,9 @@ export default function ConsecutiveSnackbars() {
     setMessageInfo(undefined);
   };
 
+const message = ["Love all play"]
   return (
     <div>
-      <Button onClick={handleClick('Message A')}>Show message A</Button>
-      <Button onClick={handleClick('Message B')}>Show message B</Button>
       <Snackbar
         key={messageInfo ? messageInfo.key : undefined}
         open={open}
@@ -49,9 +43,6 @@ export default function ConsecutiveSnackbars() {
         message={messageInfo ? messageInfo.message : undefined}
         action={
           <React.Fragment>
-            <Button color="secondary" size="small" onClick={handleClose}>
-              UNDO
-            </Button>
             <IconButton
               aria-label="close"
               color="inherit"

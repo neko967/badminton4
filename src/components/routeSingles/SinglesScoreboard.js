@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Container from '@mui/material/Container';
 import Player from './Player.js';
 import PointAndCourt from './PointAndCourt.js';
 import ScoreSheet from './ScoreSheet.js';
-import Snackbar from './Snackbar.js';
+import Call from './Call.js';
 import './SinglesScoreboard.css';
 import StartButton from './StartButton';
 
@@ -20,6 +20,8 @@ export default function SinglesScoreboard({leftPlayer, setLeftPlayer, rightPlaye
   const [isStart, setIsStart] = useState(false);
   const [isPlayerChanged, setIsPlayerChanged] = useState(false);
   const [deuce, setDeuce] = useState(false);
+  const [snackPack, setSnackPack] = useState([]);
+  const [message, setMessage] = useState("選手の位置とサーバーを決めてください");
 
   function handleLeftPointClick() {
     if ((leftPoint===21 || rightPoint===21) && !deuce) {
@@ -41,6 +43,19 @@ export default function SinglesScoreboard({leftPlayer, setLeftPlayer, rightPlaye
         nextPoints[1][leftPoint + rightPoint +1] = leftPoint +1;
       }
       setPointHistory([...pointHistory, [nextPoints[0], nextPoints[1]]]);
+      if (leftIsServer) {
+        if (leftPoint +1 === rightPoint) {
+          setMessage(`${leftPoint + 1}. All`);
+        } else {
+          setMessage(`${leftPoint + 1}. ${rightPoint}`);
+        }
+      } else {
+        if (leftPoint +1 === rightPoint) {
+          setMessage(`Service over. ${leftPoint + 1}. All`);
+        } else {
+          setMessage(`Service over. ${leftPoint + 1}. ${rightPoint}`);
+        }
+      }
     } else {
       if (isPlayerChanged) {
         setLeftSorR("R");
@@ -55,6 +70,7 @@ export default function SinglesScoreboard({leftPlayer, setLeftPlayer, rightPlaye
       setDeuce(true);
     }
   }
+  
 
   function handleRightPointClick() {
     if ((leftPoint===21 || rightPoint===21) && !deuce) {
@@ -76,8 +92,20 @@ export default function SinglesScoreboard({leftPlayer, setLeftPlayer, rightPlaye
       } else {
         nextPoints[0][leftPoint + rightPoint +1] = rightPoint +1;
       }
-      
       setPointHistory([...pointHistory, [nextPoints[0], nextPoints[1]]]);
+      if (rightIsServer) {
+        if (rightPoint +1 === leftPoint) {
+          setMessage(`${rightPoint + 1}. All`);
+        } else {
+          setMessage(`${rightPoint + 1}. ${leftPoint}`);
+        }
+      } else {
+        if (rightPoint +1 === leftPoint) {
+          setMessage(`Service over. ${rightPoint + 1}. All`);
+        } else {
+          setMessage(`Service over. ${rightPoint + 1}. ${leftPoint}`);
+        }
+      }
     } else {
       if (isPlayerChanged) {
         setLeftSorR("S");
@@ -92,12 +120,22 @@ export default function SinglesScoreboard({leftPlayer, setLeftPlayer, rightPlaye
     }
   }
 
-  function handleStartClick() {
+  useEffect(() => {
+    handleCallClick(message);
+  }, [message])
+
+  function handleStartClick(message) {
     setIsStart(true);
     nextPoints[0][0] = 0;
     nextPoints[1][0] = 0;
     setPointHistory([[nextPoints[0], nextPoints[1]]]);
+    setSnackPack((prev) => [...prev, { message, key: new Date().getTime() }]);
+    setMessage("Love All. Play");
   }
+
+  function handleCallClick (message) {
+    setSnackPack((prev) => [...prev, { message, key: new Date().getTime() }]);
+  };
 
   return (
     <div className="App">
@@ -122,7 +160,8 @@ export default function SinglesScoreboard({leftPlayer, setLeftPlayer, rightPlaye
           rightPlayer={rightPlayer} rightSorR={rightSorR}
           isPlayerChanged={isPlayerChanged}
         />
-        <StartButton isStart={isStart} onStartClick={handleStartClick}/>
+        <StartButton isStart={isStart} onStartClick={() =>handleStartClick()}/>
+        <Call snackPack={snackPack} setSnackPack={setSnackPack}/>
       </Container>
     </div>
   );
