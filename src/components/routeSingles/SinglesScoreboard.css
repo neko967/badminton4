@@ -64,3 +64,20 @@ overflow-x: auto;
 white-space: nowrap;
 -webkit-overflow-scrolling: touch;
 }
+
+.courtSquare {
+  position: relative;
+}
+
+.playerName {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+}
+
+.point {
+  font-size: 75px;
+  opacity:0.85;
+}

@@ -32,8 +32,18 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
   const [leftConsecutivePointSwitch, setLeftConsecutivePointSwitchSwitch] = useState(false);
   const [rightConsecutivePointSwitch, setRightConsecutivePointSwitchSwitch] = useState(false);
   let Players = Object.assign({}, [doublesLeftUpPlayer, doublesLeftDownPlayer, doublesRightUpPlayer, doublesRightDownPlayer] )
+  const [deuce, setDeuce] = useState(false);
 
   function handleLeftPointClick() {
+    if ((leftPoint===21 || rightPoint===21) && !deuce) {
+      return;
+    }
+    if ( Math.abs(leftPoint - rightPoint) === 2 && deuce) {
+      return;
+    }
+    if (leftPoint===30 || rightPoint===30) {
+      return;
+    }
     setRightIsServer(false);
     setLeftIsServer(true);
     
@@ -78,10 +88,22 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
           setLeftConsecutivePointSwitchSwitch(true);
         }
       }
+      if (leftPoint===20 && rightPoint===20) {
+        setDeuce(true);
+      }
     }
   }
 
   function handleRightPointClick() {
+    if ((leftPoint===21 || rightPoint===21) && !deuce) {
+      return;
+    }
+    if ( Math.abs(leftPoint - rightPoint) === 2 && deuce) {
+      return;
+    }
+    if (leftPoint===30 || rightPoint===30) {
+      return;
+    }
     setRightIsServer(true);
     setLeftIsServer(false);
     if (isStart) {
@@ -127,7 +149,10 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
           setRightConsecutivePointSwitchSwitch(true);
         }
       }
-    } 
+      if (leftPoint===20 && rightPoint===20) {
+        setDeuce(true);
+      }
+    }
   }
 
   function handleStartClick() {

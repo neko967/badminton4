@@ -29,16 +29,20 @@ export default function Court( {rightPoint, rightIsServer,
       <Box sx={{ height: {xs:200, sm:280, md:360}, backgroundColor: 'white', mt: 0.5 }}>
         <Grid container spacing={1}>
           <Grid xs={5}>
-            <LeftUpCourt leftPoint={leftPoint} 
-                         leftIsServer={leftIsServer} 
-                         leftPlayer={leftPlayer} 
-                         rightPoint={rightPoint}
-            />
-            <LeftDownCourt leftPoint={leftPoint} 
+            <div className="courtSquare">
+              <LeftUpCourt leftPoint={leftPoint} 
                            leftIsServer={leftIsServer} 
                            leftPlayer={leftPlayer} 
                            rightPoint={rightPoint}
-            />
+              />
+            </div>
+            <div className="courtSquare">
+              <LeftDownCourt leftPoint={leftPoint} 
+                             leftIsServer={leftIsServer} 
+                             leftPlayer={leftPlayer} 
+                             rightPoint={rightPoint}
+              />
+            </div>
           </Grid>
           <Grid xs={2}>
             {!isStart &&
@@ -55,16 +59,20 @@ export default function Court( {rightPoint, rightIsServer,
             }
           </Grid>
           <Grid xs={5}>
-            <RightUpCourt rightPoint={rightPoint} 
-                          rightIsServer={rightIsServer} 
-                          rightPlayer={rightPlayer} 
-                          leftPoint={leftPoint}
-            />
-            <RightDownCourt rightPoint={rightPoint} 
+            <div className="courtSquare">
+              <RightUpCourt rightPoint={rightPoint} 
                             rightIsServer={rightIsServer} 
                             rightPlayer={rightPlayer} 
                             leftPoint={leftPoint}
-            />
+              />
+            </div>
+            <div className="courtSquare">
+              <RightDownCourt rightPoint={rightPoint} 
+                              rightIsServer={rightIsServer} 
+                              rightPlayer={rightPlayer} 
+                              leftPoint={leftPoint}
+              />
+            </div>
           </Grid>
         </Grid>
       </Box>
@@ -77,9 +85,17 @@ function LeftUpCourt({leftPoint, leftIsServer, leftPlayer, rightPoint}) {
   return(
     <>
       {leftIsServer && leftPoint%2 === 1 ? 
-        <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'red', border: 0.01}}>{leftPlayer}</Box>
+        <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'red', border: 0.01}}>
+          <div className="playerName">
+            {leftPlayer}
+          </div>
+        </Box>
         : !leftIsServer && rightPoint%2 === 1 ?
-          <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}>{leftPlayer}</Box>
+          <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}>
+            <div className="playerName">
+              {leftPlayer}
+            </div>
+          </Box>
           :
           <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}></Box>
       }
@@ -91,9 +107,17 @@ function LeftDownCourt({leftPoint, leftIsServer, leftPlayer, rightPoint}) {
   return(
     <>
       {leftIsServer && leftPoint%2 === 0 ? 
-        <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'red', border: 0.01}}>{leftPlayer}</Box>
+        <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'red', border: 0.01}}>
+          <div className="playerName">
+            {leftPlayer}
+          </div>
+        </Box>
         : !leftIsServer && rightPoint%2 ===0 ?
-          <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}>{leftPlayer}</Box>
+          <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}>
+            <div className="playerName">
+              {leftPlayer}
+            </div>
+          </Box>
           :
           <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}></Box>
       }
@@ -105,9 +129,17 @@ function RightUpCourt({rightPoint, rightIsServer, rightPlayer, leftPoint}) {
   return(
     <>
       {rightIsServer && rightPoint%2 === 0 ? 
-        <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'red', border: 0.01}}>{rightPlayer}</Box>
+        <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'red', border: 0.01}}>
+          <div className="playerName">
+            {rightPlayer}
+          </div>
+        </Box>
         : !rightIsServer && leftPoint%2 ===0 ?
-          <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}>{rightPlayer}</Box>
+          <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}>
+            <div className="playerName">
+              {rightPlayer}
+            </div>
+          </Box>
           :
           <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}></Box>
       }
@@ -119,9 +151,17 @@ function RightDownCourt({rightPoint, rightIsServer, rightPlayer, leftPoint}) {
   return(
     <>
       {rightIsServer && rightPoint%2 === 1 ? 
-      <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'red', border: 0.01}}>{rightPlayer}</Box>
+      <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'red', border: 0.01}}>
+        <div className="playerName">
+          {rightPlayer}
+        </div>
+      </Box>
       : !rightIsServer && leftPoint%2 === 1 ?
-        <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}>{rightPlayer}</Box>
+        <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}>
+          <div className="playerName">
+            {rightPlayer}
+          </div>
+        </Box>
         :
         <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}></Box>
       }

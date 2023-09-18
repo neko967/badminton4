@@ -89,7 +89,7 @@ export default function DialogSelect({ doublesOpen, handleDoublesClose,
                 </Select>
               </FormControl> 
             :
-              <Paper>ログイン後は自分が登録してメンバーが出るように鋭意製作中です</Paper>
+              <Paper>ログイン後は自分が登録したメンバーが出るように鋭意製作中です</Paper>
             }
             
           </Box>

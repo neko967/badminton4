@@ -8,9 +8,6 @@ export default function ScoreSheet ({currentPoints, currentSorR,
                                      rightUpPlayer, rightDownPlayer,
                                      manipulated_0, manipulated_1, manipulated_2, manipulated_3,
                                      isHorizPlayerChanged, isLeftVertPlayerChanged, isRightVertPlayerChanged}) {
-  console.log(`isHorizPlayerChanged: ${isHorizPlayerChanged}`);
-  console.log(`isLeftVertPlayerChanged: ${isLeftVertPlayerChanged}`);
-  console.log(`isRightVertPlayerChanged: ${isRightVertPlayerChanged}`);
 
   return (
     <div className="scoreSheet">

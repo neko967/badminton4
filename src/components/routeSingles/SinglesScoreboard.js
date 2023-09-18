@@ -19,9 +19,16 @@ export default function SinglesScoreboard({leftPlayer, setLeftPlayer, rightPlaye
   const nextPoints = currentPoints.slice();
   const [isStart, setIsStart] = useState(false);
   const [isPlayerChanged, setIsPlayerChanged] = useState(false);
+  const [deuce, setDeuce] = useState(false);
 
   function handleLeftPointClick() {
-    if (leftPoint===21 || rightPoint===21) {
+    if ((leftPoint===21 || rightPoint===21) && !deuce) {
+      return;
+    }
+    if ( Math.abs(leftPoint - rightPoint) === 2 && deuce) {
+      return;
+    }
+    if (leftPoint===30 || rightPoint===30) {
       return;
     }
     setRightIsServer(false);
@@ -44,12 +51,22 @@ export default function SinglesScoreboard({leftPlayer, setLeftPlayer, rightPlaye
       }
       
     }
+    if (leftPoint===20 && rightPoint===20) {
+      setDeuce(true);
+    }
   }
 
   function handleRightPointClick() {
-    if (leftPoint===21 || rightPoint===21) {
+    if ((leftPoint===21 || rightPoint===21) && !deuce) {
       return;
     }
+    if ( Math.abs(leftPoint - rightPoint) === 2 && deuce) {
+      return;
+    }
+    if (leftPoint===30 || rightPoint===30) {
+      return;
+    }
+
     setRightIsServer(true);
     setLeftIsServer(false);
     if (isStart) {
@@ -70,6 +87,9 @@ export default function SinglesScoreboard({leftPlayer, setLeftPlayer, rightPlaye
         setRightSorR("S");
       }
     }
+    if (leftPoint===20 && rightPoint===20) {
+      setDeuce(true);
+    }
   }
 
   function handleStartClick() {
@@ -77,11 +97,6 @@ export default function SinglesScoreboard({leftPlayer, setLeftPlayer, rightPlaye
     nextPoints[0][0] = 0;
     nextPoints[1][0] = 0;
     setPointHistory([[nextPoints[0], nextPoints[1]]]);
-  }
-
-  function calculateWinner () {
-    
-
   }
 
   return (
