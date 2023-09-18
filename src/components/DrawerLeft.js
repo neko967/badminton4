@@ -109,14 +109,8 @@ export default function PersistentDrawerLeft({ isAuth, setIsAuth }) {
         </Toolbar>
       </AppBar>
       <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
+        sx={{ width: drawerWidth, flexShrink: 0,
+              '& .MuiDrawer-paper': { width: drawerWidth, boxSizing: 'border-box', },}}
         variant="persistent"
         anchor="left"
         open={open}
@@ -128,20 +122,12 @@ export default function PersistentDrawerLeft({ isAuth, setIsAuth }) {
         </DrawerHeader>
         <Divider />
         <List>
-          <ListItem disablePadding onClick={() => navigate('/home')}>
+          <ListItem disablePadding onClick={() => navigate('/')}>
             <ListItemButton>
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
               <ListItemText primary='ホーム' />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding onClick={() => navigate('/')}>
-            <ListItemButton>
-              <ListItemIcon>
-                <ScoreboardIcon />
-              </ListItemIcon>
-              <ListItemText primary='スコアボード' />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding onClick={() => navigate('/record')}>

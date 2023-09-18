@@ -2,7 +2,6 @@ import React from 'react'
 import Paper from '@mui/material/Paper';
 
 import HomeIcon from '@mui/icons-material/Home';
-import ScoreboardIcon from '@mui/icons-material/Scoreboard';
 import RestoreIcon from '@mui/icons-material/Restore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import GroupsIcon from '@mui/icons-material/Groups';
@@ -31,10 +30,9 @@ export default function Menu() {
                 setValue(newValue);
               }}
             >
-              <BottomNavigationAction icon={<HomeIcon />} onClick={() => navigate('/home')}/>
-              <BottomNavigationAction icon={<ScoreboardIcon />} onClick={() => navigate('/')}/>
+              <BottomNavigationAction icon={<HomeIcon />} onClick={() => navigate('/')}/>
               <BottomNavigationAction icon={<RestoreIcon />} onClick={() => navigate('/record')}/>
-              <BottomNavigationAction icon={<GroupsIcon />} onClick={() => navigate('/member')}/>
+              <BottomNavigationAction icon={<MoreVertIcon />} onClick={() => navigate('/member')}/>
             </BottomNavigation>
           </Paper> 
         </Box>

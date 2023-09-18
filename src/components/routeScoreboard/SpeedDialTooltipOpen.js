@@ -43,7 +43,7 @@ export default function SpeedDialTooltipOpen({ setSinglesLeftPlayer, setSinglesR
 
   return (
     <>
-    <Box sx={{ position: 'fixed', bottom: 60, left: 0, right: {xs: 10, lg:120}}}>
+    <Box sx={{ position: 'fixed', bottom: 60, left: 0, right: {xs: 10, md:100 ,lg:276}}}>
       <Backdrop open={dialOpen} />
       <SpeedDial
         ariaLabel="SpeedDial tooltip example"
