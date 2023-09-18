@@ -112,25 +112,21 @@ function MakeDoublesTeamDialog({ doublesTeamOpen, handleDoublesTeamClose, player
   const [firstPlayer, setFirstPlayer] = useState('');
   const handleFirstPlayerChange = (event) => {
     setFirstPlayer(String(event.target.value) || '');
-    console.log([firstPlayer, secondPlayer, thirdPlayer, fourthPlayer]);
   };
 
   const [secondPlayer, setSecondPlayer] = useState('');
   const handleSecondPlayerChange = (event) => {
     setSecondPlayer(String(event.target.value) || '');
-    console.log([firstPlayer, secondPlayer, thirdPlayer, fourthPlayer]);
   };
 
   const [thirdPlayer, setThirdPlayer] = useState('');
   const handleThirdPlayerChange = (event) => {
     setThirdPlayer(String(event.target.value) || '');
-    console.log([firstPlayer, secondPlayer, thirdPlayer, fourthPlayer]);
   };
 
   const [fourthPlayer, setFourthPlayer] = useState('');
   const handleFourthPlayerChange = (event) => {
     setFourthPlayer(String(event.target.value) || '');
-    console.log([firstPlayer, secondPlayer, thirdPlayer, fourthPlayer]);
   };
 
   function setPlayers (dividedPlayers) {

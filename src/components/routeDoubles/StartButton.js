@@ -11,7 +11,7 @@ export default function StartButton({ isStart, onStartClick}) {
         size="large"
         sx={{ 
           position: 'fixed', 
-          bottom: 60, 
+          bottom: 57.5, 
           left: {xs:0, sm:30, lg:140}, 
           right: {xs:0, sm:30, lg:140}}}
         onClick={onStartClick}

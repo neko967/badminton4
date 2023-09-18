@@ -1,18 +1,60 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
-
+import Fab from '@mui/material/Fab';
+import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
+import SwapVertIcon from '@mui/icons-material/SwapVert';
 
 export default function Court( {rightPoint, rightIsServer, 
                                 leftPoint, leftIsServer,
                                 leftUpPlayer, leftDownPlayer,
-                                rightUpPlayer, rightDownPlayer}) {
+                                rightUpPlayer, rightDownPlayer,
+                                isStart,
+                                manipulated_0, setManipulated_0,
+                                manipulated_1, setManipulated_1,
+                                manipulated_2, setManipulated_2,
+                                manipulated_3, setManipulated_3}) {
+
+  function handleServay () {
+    console.log(`manipulated_0=${manipulated_0}, manipulated_1=${manipulated_1}, manipulated_2=${manipulated_2}, manipulated_3=${manipulated_3}`);
+  }
+  function handleHorizontalPlayerChange () {
+    setManipulated_0(manipulated_2);
+    setManipulated_1(manipulated_3);
+    setManipulated_2(manipulated_0);
+    setManipulated_3(manipulated_1);
+    console.log(`manipulated_0=${manipulated_0}, manipulated_1=${manipulated_1}, manipulated_2=${manipulated_2}, manipulated_3=${manipulated_3}`);
+  }
+
+  function handleLeftVerticalPlayerChange () {
+    setManipulated_0(manipulated_1);
+    setManipulated_1(manipulated_0);
+    console.log(`manipulated_0=${manipulated_0}, manipulated_1=${manipulated_1}, manipulated_2=${manipulated_2}, manipulated_3=${manipulated_3}`);
+  }
+
+  function handleRightVerticalPlayerChange () {
+    setManipulated_2(manipulated_3);
+    setManipulated_3(manipulated_2);
+    console.log(`manipulated_0=${manipulated_0}, manipulated_1=${manipulated_1}, manipulated_2=${manipulated_2}, manipulated_3=${manipulated_3}`);
+  }
 
   return (
     <div>
       <Box sx={{ height: {xs:200, sm:280, md:360}, backgroundColor: 'white', mt: 0.5 }}>
         <Grid container spacing={1}>
           <Grid xs={5}>
+            {!isStart &&
+              <Fab 
+                size="small" 
+                color="primary" 
+                aria-label="add" 
+                line-height="0" 
+                sx={{ mt: {xs:9.5, sm:14.5, md:19.5}, position: 'absolute' }}
+                onClick={() => handleLeftVerticalPlayerChange()}
+              >
+                <SwapVertIcon/>
+              </Fab>
+            }
             <LeftUpCourt leftPoint={leftPoint} 
                          leftIsServer={leftIsServer} 
                          leftUpPlayer={leftUpPlayer}
@@ -23,8 +65,44 @@ export default function Court( {rightPoint, rightIsServer,
             />
           </Grid>
           <Grid xs={2}>
+            {!isStart &&
+              <Fab 
+                size="small" 
+                color="primary" 
+                aria-label="add" 
+                line-height="0" 
+                sx={{ mt: {xs:1.5, sm:14.5, md:19.5}, position: 'absolute' }}
+                onClick={() => handleServay()}
+              >
+                <SwapVertIcon/>
+              </Fab>
+            }
+            {!isStart &&
+              <Fab 
+                size="small" 
+                color="secondary" 
+                aria-label="add" 
+                line-height="100" 
+                sx={{ mt: {xs:9.5, sm:14.5, md:19.5} }}
+                onClick={() => handleHorizontalPlayerChange()}
+              >
+                <SwapHorizIcon/>
+              </Fab>
+            }
           </Grid>
           <Grid xs={5}>
+            {!isStart &&
+              <Fab 
+                size="small" 
+                color="primary" 
+                aria-label="add" 
+                line-height="0" 
+                sx={{ mt: {xs:9.5, sm:14.5, md:19.5}, position: 'absolute' }}
+                onClick={() => handleRightVerticalPlayerChange()}
+              >
+                <SwapVertIcon/>
+              </Fab>
+            }
             <RightUpCourt rightPoint={rightPoint} 
                           rightIsServer={rightIsServer} 
                           rightUpPlayer={rightUpPlayer}

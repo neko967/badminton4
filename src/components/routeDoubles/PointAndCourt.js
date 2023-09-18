@@ -10,7 +10,12 @@ import Court from './Court.js';
 export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPointClick, 
                                         rightPoint, rightIsServer, handleRightPointClick,
                                         leftUpPlayer, leftDownPlayer,
-                                        rightUpPlayer, rightDownPlayer}) {
+                                        rightUpPlayer, rightDownPlayer,
+                                        isStart,
+                                        manipulated_0, setManipulated_0, 
+                                        manipulated_1, setManipulated_1, 
+                                        manipulated_2, setManipulated_2,
+                                        manipulated_3, setManipulated_3}) {
 
   const sm_matches = useMediaQuery('(max-width:899px)');
   const md_matches = useMediaQuery('(min-width:900px)');
@@ -31,6 +36,11 @@ export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPoint
                    rightPoint={rightPoint} rightIsServer={rightIsServer}
                    leftUpPlayer={leftUpPlayer} leftDownPlayer={leftDownPlayer} 
                    rightUpPlayer={rightUpPlayer} rightDownPlayer={rightDownPlayer}
+                   isStart={isStart}
+                   manipulated_0={manipulated_0} setManipulated_0={setManipulated_0} 
+                   manipulated_1={manipulated_1} setManipulated_1={setManipulated_1}
+                   manipulated_2={manipulated_2} setManipulated_2={setManipulated_2}
+                   manipulated_3={manipulated_3} setManipulated_3={setManipulated_3}
             />
           </Grid>
         </>
@@ -44,6 +54,11 @@ export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPoint
                    rightPoint={rightPoint} rightIsServer={rightIsServer}
                    leftUpPlayer={leftUpPlayer} leftDownPlayer={leftDownPlayer} 
                    rightUpPlayer={rightUpPlayer} rightDownPlayer={rightDownPlayer}
+                   isStart={isStart}
+                   manipulated_0={manipulated_0} setManipulated_0={setManipulated_0} 
+                   manipulated_1={manipulated_1} setManipulated_1={setManipulated_1}
+                   manipulated_2={manipulated_2} setManipulated_2={setManipulated_2}
+                   manipulated_3={manipulated_3} setManipulated_3={setManipulated_3}
             />
           </Grid>
           <Grid md={2.5}>

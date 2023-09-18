@@ -15,12 +15,12 @@ import { useState } from 'react';
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
-  const [singlesLeftPlayer, setSinglesLeftPlayer] = useState("ゲストA");
-  const [singlesRightPlayer, setSinglesRightPlayer] = useState("ゲストB");
-  const [doublesLeftUpPlayer, setDoublesLeftUpPlayer] = useState("ゲストA");
-  const [doublesLeftDownPlayer, setDoublesLeftDownPlayer] = useState("ゲストB");
-  const [doublesRightUpPlayer, setDoublesRightUpPlayer] = useState("ゲストC");
-  const [doublesRightDownPlayer, setDoublesRightDownPlayer] = useState("ゲストD");
+  const [singlesLeftPlayer, setSinglesLeftPlayer] = useState("名無しA");
+  const [singlesRightPlayer, setSinglesRightPlayer] = useState("名無しB");
+  const [doublesLeftUpPlayer, setDoublesLeftUpPlayer] = useState("名無しA");
+  const [doublesLeftDownPlayer, setDoublesLeftDownPlayer] = useState("名無しB");
+  const [doublesRightUpPlayer, setDoublesRightUpPlayer] = useState("名無しC");
+  const [doublesRightDownPlayer, setDoublesRightDownPlayer] = useState("名無しD");
 
   return (
     <>
