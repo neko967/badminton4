@@ -11,7 +11,8 @@ import DoublesSelectDialog from './DoublesSelectDialog';
 
 export default function SpeedDialTooltipOpen({ setSinglesLeftPlayer, setSinglesRightPlayer,
                                                setDoublesLeftUpPlayer, setDoublesLeftDownPlayer,
-                                               setDoublesRightUpPlayer, setDoublesRightDownPlayer }) {
+                                               setDoublesRightUpPlayer, setDoublesRightDownPlayer,
+                                               isAuth }) {
   const [dialOpen, setDialOpen] = React.useState(false);
   const handleDialOpen = () => setDialOpen(true);
   const handleDialClose = () => setDialOpen(false);
@@ -69,6 +70,7 @@ export default function SpeedDialTooltipOpen({ setSinglesLeftPlayer, setSinglesR
       handleSinglesClose={handleSinglesClose} 
       setLeftPlayer={setSinglesLeftPlayer}
       setRightPlayer={setSinglesRightPlayer}
+      isAuth={isAuth}
     />
     <DoublesSelectDialog 
       doublesOpen={doublesOpen} 
@@ -77,6 +79,7 @@ export default function SpeedDialTooltipOpen({ setSinglesLeftPlayer, setSinglesR
       setLeftDownPlayer={setDoublesLeftDownPlayer}
       setRightUpPlayer={setDoublesRightUpPlayer}
       setRightDownPlayer={setDoublesRightDownPlayer}
+      isAuth={isAuth}
     />
   </>
   );

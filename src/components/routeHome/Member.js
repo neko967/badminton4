@@ -32,7 +32,7 @@ function createData(name, calories, fat, carbs) {
   return { name, calories, fat, carbs};
 }
 
-const rows = [
+const defaultRows = [
   createData('ゲストA', '〇〇高校', '58%', 2036),
   createData('ゲストB', '〇〇高校', '47%', 1987),
   createData('ゲストC', '〇〇高校', '64%', 2134),
@@ -43,7 +43,12 @@ const rows = [
   createData('ゲストH', '〇〇高校', '41%', 1932),
 ];
 
-export default function Members() {
+const LoginRows = [
+  createData('ログイン後は自分が登録したメンバーが出るように鋭意製作中です'),
+];
+
+
+export default function Members( {isAuth}) {
 
   return (
     <>
@@ -57,8 +62,9 @@ export default function Members() {
               <StyledTableCell align="right">強さ</StyledTableCell>
             </TableRow>
           </TableHead>
+          {!isAuth ?
           <TableBody>
-            {rows.map((row) => (
+            {defaultRows.map((row) => (
               <StyledTableRow key={row.name}>
                 <StyledTableCell component="th" scope="row">
                   {row.name}
@@ -69,6 +75,20 @@ export default function Members() {
               </StyledTableRow>
             ))}
           </TableBody>
+          :
+          <TableBody>
+             {LoginRows.map((row) => (
+              <StyledTableRow key={row.name}>
+                <StyledTableCell component="th" scope="row">
+                  {row.name}
+                </StyledTableCell>
+                <StyledTableCell align="left">{row.calories}</StyledTableCell>
+                <StyledTableCell align="right">{row.fat}</StyledTableCell>
+                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+          }
         </Table>
       </TableContainer>
     </>

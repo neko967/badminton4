@@ -64,3 +64,24 @@ body {
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
   }
+
+  .courtSquare {
+    position: relative;
+  }
+
+  .playerName {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .Court {
+    position: relative;
+  }
+
+  .switchVerticalButton {
+    position: absolute;
+    left: 50%;
+    margin-left: -18px
+  }

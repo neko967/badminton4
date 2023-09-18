@@ -13,6 +13,7 @@ import Select from '@mui/material/Select';
 import { useNavigate } from 'react-router-dom';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
+import Paper from '@mui/material/Paper';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -29,7 +30,7 @@ const names = [
   'ゲストA','ゲストB','ゲストC','ゲストD', 'ゲストE','ゲストF','ゲストG','ゲストH'
 ];
 
-export default function DialogSelect({ singlesOpen, handleSinglesClose, setLeftPlayer, setRightPlayer }) {
+export default function DialogSelect({ singlesOpen, handleSinglesClose, setLeftPlayer, setRightPlayer, isAuth }) {
   const navigate = useNavigate();
 
   const [personName, setPersonName] = React.useState([]);
@@ -55,6 +56,7 @@ export default function DialogSelect({ singlesOpen, handleSinglesClose, setLeftP
         <DialogTitle>2人選んでください</DialogTitle>
         <DialogContent>
           <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap' }}>
+            {!isAuth ?
             <FormControl sx={{ m: 1, width: 300 }}>
               <InputLabel id="demo-multiple-checkbox-label">シングルス</InputLabel>
               <Select
@@ -75,6 +77,9 @@ export default function DialogSelect({ singlesOpen, handleSinglesClose, setLeftP
                 ))}
               </Select>
             </FormControl>
+            :
+            <Paper>ログイン後は自分が登録したメンバーが出るように鋭意製作中です</Paper>
+            }
           </Box>
         </DialogContent>
         <DialogActions>

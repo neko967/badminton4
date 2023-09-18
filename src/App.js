@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css';
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import Scoreboard from './components/routeScoreboard/Scoreboard';
+import Home from './components/routeHome/Home';
 import Singles from './components/routeSingles/SinglesScoreboard';
 import Doubles from './components/routeDoubles/DoublesScoreboard';
 import Record from './components/routeRecord/Records';
@@ -26,12 +26,13 @@ function App() {
       <Router>
         <DrawerLeft isAuth={isAuth} setIsAuth={setIsAuth}/>
         <Routes>
-          <Route path="/" element={<Scoreboard setSinglesLeftPlayer={setSinglesLeftPlayer} 
-                                               setSinglesRightPlayer={setSinglesRightPlayer}
-                                               setDoublesLeftUpPlayer={setDoublesLeftUpPlayer}
-                                               setDoublesLeftDownPlayer={setDoublesLeftDownPlayer}
-                                               setDoublesRightUpPlayer={setDoublesRightUpPlayer}
-                                               setDoublesRightDownPlayer={setDoublesRightDownPlayer}
+          <Route path="/" element={<Home setSinglesLeftPlayer={setSinglesLeftPlayer} 
+                                         setSinglesRightPlayer={setSinglesRightPlayer}
+                                         setDoublesLeftUpPlayer={setDoublesLeftUpPlayer}
+                                         setDoublesLeftDownPlayer={setDoublesLeftDownPlayer}
+                                         setDoublesRightUpPlayer={setDoublesRightUpPlayer}
+                                         setDoublesRightDownPlayer={setDoublesRightDownPlayer}
+                                         isAuth={isAuth}
                                    />}
           />
           <Route path="/singles" element={<Singles leftPlayer={singlesLeftPlayer} 

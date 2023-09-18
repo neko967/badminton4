@@ -68,12 +68,29 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
         }
       }
       setPointHistory([...pointHistory, [nextPoints[0], nextPoints[1], nextPoints[2], nextPoints[3]]]);
+
+      if (leftIsServer) {
+        if (isHorizPlayerChanged) {
+          setDoublesLeftUpPlayer(doublesLeftDownPlayer);
+          setDoublesLeftDownPlayer(doublesLeftUpPlayer);
+          setManipulated_2(manipulated_3);
+          setManipulated_3(manipulated_2);
+        } else {
+          setDoublesLeftUpPlayer(doublesLeftDownPlayer);
+          setDoublesLeftDownPlayer(doublesLeftUpPlayer);
+          setManipulated_0(manipulated_1);
+          setManipulated_1(manipulated_0);
+        }
+      }
     }
   }
 
   function handleRightPointClick() {
+    setRightIsServer(true);
+    setLeftIsServer(false);
     if (isStart) {
       setRightPoint(rightPoint + 1);
+
       if (rightIsServer) {
         if (currentPoints[manipulated_2][leftPoint+rightPoint]!==null) {
           nextPoints[manipulated_2][leftPoint + rightPoint +1] = rightPoint +1;
@@ -81,6 +98,7 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
           nextPoints[manipulated_3][leftPoint + rightPoint +1] = rightPoint +1;
         }
       }
+
       if (leftIsServer) {
         if (currentPoints[manipulated_2][leftPoint+rightPoint]===null && currentPoints[manipulated_3][leftPoint+rightPoint]===null) {
           if (currentPoints[manipulated_2].reduce(function (a, b) {return Math.max(a, b);}) > currentPoints[manipulated_3].reduce(function (a, b) {return Math.max(a, b);})) {
@@ -105,22 +123,52 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
         }
       }
       setPointHistory([...pointHistory, [nextPoints[0], nextPoints[1], nextPoints[2], nextPoints[3]]]);
-    }
-    setRightIsServer(true);
-    setLeftIsServer(false);
+      if (rightIsServer) {
+        if (isHorizPlayerChanged) {
+          setDoublesRightUpPlayer(doublesRightDownPlayer);
+          setDoublesRightDownPlayer(doublesRightUpPlayer);
+          setManipulated_0(manipulated_1);
+          setManipulated_1(manipulated_0);
+        } else {
+          setDoublesRightUpPlayer(doublesRightDownPlayer);
+          setDoublesRightDownPlayer(doublesRightUpPlayer);
+          setManipulated_2(manipulated_3);
+          setManipulated_3(manipulated_2);
+        }
+      }
+    } 
   }
 
   function handleStartClick() {
     setIsStart(true);
-    nextPoints[manipulated_1][0] = 0;
-    nextPoints[manipulated_2][0] = 0;
-    setPointHistory([[nextPoints[0], nextPoints[1], nextPoints[2], nextPoints[3]]]);
-    if (leftIsServer){
-      nextSorR[manipulated_1][0] = "S"
-      nextSorR[manipulated_2][0] = "R"
+    if ((isHorizPlayerChanged === true && isLeftVertPlayerChanged ===true && isRightVertPlayerChanged === false)
+        || (isHorizPlayerChanged === true && isLeftVertPlayerChanged ===false && isRightVertPlayerChanged === true) ) {
+      nextPoints[manipulated_0][0] = 0;
+      nextPoints[manipulated_3][0] = 0;
     } else {
-      nextSorR[manipulated_1][0] = "R"
-      nextSorR[manipulated_2][0] = "S"
+      nextPoints[manipulated_1][0] = 0;
+      nextPoints[manipulated_2][0] = 0;
+    }
+    setPointHistory([[nextPoints[0], nextPoints[1], nextPoints[2], nextPoints[3]]]);
+    
+    if (leftIsServer){
+      if ((isHorizPlayerChanged === true && isLeftVertPlayerChanged ===true && isRightVertPlayerChanged === false)
+          || (isHorizPlayerChanged === true && isLeftVertPlayerChanged ===false && isRightVertPlayerChanged === true) ) {
+        nextSorR[manipulated_0][0] = "S"
+        nextSorR[manipulated_3][0] = "R"
+      } else {
+        nextSorR[manipulated_1][0] = "S"
+        nextSorR[manipulated_2][0] = "R"
+      }
+    } else {
+      if ((isHorizPlayerChanged === true && isLeftVertPlayerChanged ===true && isRightVertPlayerChanged === false)
+          || (isHorizPlayerChanged === true && isLeftVertPlayerChanged ===false && isRightVertPlayerChanged === true) ) {
+        nextSorR[manipulated_0][0] = "R"
+        nextSorR[manipulated_3][0] = "S"
+      } else {
+        nextSorR[manipulated_1][0] = "R"
+        nextSorR[manipulated_2][0] = "S"
+      }
     }
     setSorRHistory([[nextSorR[0], nextSorR[1], nextSorR[2], nextSorR[3]]]);
   }
