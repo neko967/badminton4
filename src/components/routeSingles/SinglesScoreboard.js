@@ -22,6 +22,7 @@ export default function SinglesScoreboard({leftPlayer, setLeftPlayer, rightPlaye
   const [deuce, setDeuce] = useState(false);
   const [snackPack, setSnackPack] = useState([]);
   const [message, setMessage] = useState("選手の位置とサーバーを決めてください");
+  const [isLeftMatchPoint, setIsLeftMatchPoint] = useState(false);
 
   function handleLeftPointClick() {
     if ((leftPoint===21 || rightPoint===21) && !deuce) {
@@ -43,17 +44,21 @@ export default function SinglesScoreboard({leftPlayer, setLeftPlayer, rightPlaye
         nextPoints[1][leftPoint + rightPoint +1] = leftPoint +1;
       }
       setPointHistory([...pointHistory, [nextPoints[0], nextPoints[1]]]);
-      if (leftIsServer) {
-        if (leftPoint +1 === rightPoint) {
-          setMessage(`${leftPoint + 1}. All`);
-        } else {
-          setMessage(`${leftPoint + 1}. ${rightPoint}`);
-        }
+      if (isLeftMatchPoint) {
+        setMessage(`Match won by ${leftPlayer}`);
       } else {
-        if (leftPoint +1 === rightPoint) {
-          setMessage(`Service over. ${leftPoint + 1}. All`);
+        if (leftIsServer) {
+          if (leftPoint +1 === rightPoint) {
+            setMessage(`${leftPoint + 1}. All`);
+          } else {
+            setMessage(`${leftPoint + 1}. ${rightPoint}`);
+          }
         } else {
-          setMessage(`Service over. ${leftPoint + 1}. ${rightPoint}`);
+          if (leftPoint +1 === rightPoint) {
+            setMessage(`Service over. ${leftPoint + 1}. All`);
+          } else {
+            setMessage(`Service over. ${leftPoint + 1}. ${rightPoint}`);
+          }
         }
       }
     } else {

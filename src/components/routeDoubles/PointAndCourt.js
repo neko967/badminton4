@@ -66,7 +66,7 @@ export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPoint
             <Court leftPoint={leftPoint} leftIsServer={leftIsServer} 
                    rightPoint={rightPoint} rightIsServer={rightIsServer}
                    leftUpPlayer={leftUpPlayer} setLeftUpPlayer={setLeftUpPlayer}
-                   leftDownPlayer={leftDownPlayer} setLefDownPlayer={setLeftDownPlayer}
+                   leftDownPlayer={leftDownPlayer} setLeftDownPlayer={setLeftDownPlayer}
                    rightUpPlayer={rightUpPlayer} setRightUpPlayer={setRightUpPlayer}
                    rightDownPlayer={rightDownPlayer} setRightDownPlayer={setRightDownPlayer}
                    isStart={isStart}

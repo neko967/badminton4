@@ -35,15 +35,19 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
   const [deuce, setDeuce] = useState(false);
   const [snackPack, setSnackPack] = useState([]);
   const [message, setMessage] = useState("選手の位置とサーバーを決めてください");
+  const [isFinish, setIsFinish] = useState(false);
 
   function handleLeftPointClick() {
     if ((leftPoint===21 || rightPoint===21) && !deuce) {
+      setIsFinish(true);
       return;
     }
     if ( Math.abs(leftPoint - rightPoint) === 2 && deuce) {
+      setIsFinish(true);
       return;
     }
     if (leftPoint===30 || rightPoint===30) {
+      setIsFinish(true);
       return;
     }
     setRightIsServer(false);
@@ -93,17 +97,21 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
       if (leftPoint===20 && rightPoint===20) {
         setDeuce(true);
       }
-      if (leftIsServer) {
-        if (leftPoint +1 === rightPoint) {
-          setMessage(`${leftPoint + 1}. All`);
-        } else {
-          setMessage(`${leftPoint + 1}. ${rightPoint}`);
-        }
+      if (isFinish) {
+        setMessage(`${leftPoint + 100}`);
       } else {
-        if (leftPoint +1 === rightPoint) {
-          setMessage(`Service over. ${leftPoint + 1}. All`);
+        if (leftIsServer) {
+          if (leftPoint +1 === rightPoint) {
+            setMessage(`${leftPoint + 1}. All`);
+          } else {
+            setMessage(`${leftPoint + 1}. ${rightPoint}`);
+          }
         } else {
-          setMessage(`Service over. ${leftPoint + 1}. ${rightPoint}`);
+          if (leftPoint +1 === rightPoint) {
+            setMessage(`Service over. ${leftPoint + 1}. All`);
+          } else {
+            setMessage(`Service over. ${leftPoint + 1}. ${rightPoint}`);
+          }
         }
       }
     }
@@ -111,12 +119,15 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
 
   function handleRightPointClick() {
     if ((leftPoint===21 || rightPoint===21) && !deuce) {
+      setIsFinish(true);
       return;
     }
     if ( Math.abs(leftPoint - rightPoint) === 2 && deuce) {
+      setIsFinish(true);
       return;
     }
     if (leftPoint===30 || rightPoint===30) {
+      setIsFinish(true);
       return;
     }
     setRightIsServer(true);
