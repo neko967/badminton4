@@ -72,17 +72,6 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
       setPointHistory([...pointHistory, [nextPoints[0], nextPoints[1], nextPoints[2], nextPoints[3]]]);
 
       if (leftIsServer) {
-        if (isHorizPlayerChanged) {
-          setDoublesLeftUpPlayer(doublesLeftDownPlayer);
-          setDoublesLeftDownPlayer(doublesLeftUpPlayer);
-          setManipulated_2(manipulated_3);
-          setManipulated_3(manipulated_2);
-        } else {
-          setDoublesLeftUpPlayer(doublesLeftDownPlayer);
-          setDoublesLeftDownPlayer(doublesLeftUpPlayer);
-          setManipulated_0(manipulated_1);
-          setManipulated_1(manipulated_0);
-        }
         if (leftConsecutivePointSwitch) {
           setLeftConsecutivePointSwitchSwitch(false);
         } else {
@@ -131,17 +120,7 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
       }
       setPointHistory([...pointHistory, [nextPoints[0], nextPoints[1], nextPoints[2], nextPoints[3]]]);
       if (rightIsServer) {
-        if (isHorizPlayerChanged) {
-          setDoublesRightUpPlayer(doublesRightDownPlayer);
-          setDoublesRightDownPlayer(doublesRightUpPlayer);
-          setManipulated_0(manipulated_1);
-          setManipulated_1(manipulated_0);
-        } else {
-          setDoublesRightUpPlayer(doublesRightDownPlayer);
-          setDoublesRightDownPlayer(doublesRightUpPlayer);
-          setManipulated_2(manipulated_3);
-          setManipulated_3(manipulated_2);
-        }
+        
         if (rightConsecutivePointSwitch) {
           setRightConsecutivePointSwitchSwitch(false);
         } else {
@@ -190,8 +169,6 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
       <Container maxWidth="lg" sx={{marginTop: {xs:7.5, sm:8.5}}}>
         <Player leftUpPlayer={doublesLeftUpPlayer} leftDownPlayer={doublesLeftDownPlayer} 
                 rightUpPlayer={doublesRightUpPlayer} rightDownPlayer={doublesRightDownPlayer}
-                leftConsecutivePointSwitch={leftConsecutivePointSwitch}
-                rightConsecutivePointSwitch={rightConsecutivePointSwitch}
         />
         <PointAndCourt leftPoint={leftPoint} leftIsServer={leftIsServer}
                        handleLeftPointClick={handleLeftPointClick}
@@ -209,6 +186,8 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
                        isHorizPlayerChanged={isHorizPlayerChanged} setIsHorizPlayerChanged={setIsHorizPlayerChanged}
                        isLeftVertPlayerChanged={isLeftVertPlayerChanged} setIsLeftvertPlayerChanged={setIsLeftvertPlayerChanged}
                        isRightVertPlayerChanged={isRightVertPlayerChanged} setIsRightVertPlayerChanged={setIsRightVertPlayerChanged}
+                       leftConsecutivePointSwitch={leftConsecutivePointSwitch}
+                       rightConsecutivePointSwitch={rightConsecutivePointSwitch}
         />
         <ScoreSheet 
           currentPoints={currentPoints} currentSorR={currentSorR}

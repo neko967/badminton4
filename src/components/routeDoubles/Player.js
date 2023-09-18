@@ -18,44 +18,18 @@ export default function Player({ leftUpPlayer, leftDownPlayer, rightUpPlayer, ri
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={1}>
-        {leftConsecutivePointSwitch ?
-          <>
-            <Grid xs={3}>
-              <Item>{leftDownPlayer}</Item>
-            </Grid>
-            <Grid xs={3}>
-              <Item>{leftUpPlayer}</Item>
-            </Grid>
-          </>
-          :
-          <>
-            <Grid xs={3}>
-              <Item>{leftUpPlayer}</Item>
-            </Grid>
-            <Grid xs={3}>
-              <Item>{leftDownPlayer}</Item>
-            </Grid>
-          </>
-        }
-        {rightConsecutivePointSwitch ?
-          <>
-            <Grid xs={3}>
-              <Item>{rightDownPlayer}</Item>
-            </Grid>
-            <Grid xs={3}>
-              <Item>{rightUpPlayer}</Item>
-            </Grid>
-          </>
-          :
-          <>
-            <Grid xs={3}>
-              <Item>{rightUpPlayer}</Item>
-            </Grid>
-            <Grid xs={3}>
-              <Item>{rightDownPlayer}</Item>
-            </Grid>
-          </>
-        }
+        <Grid xs={3}>
+          <Item>{leftUpPlayer}</Item>
+        </Grid>
+        <Grid xs={3}>
+          <Item>{leftDownPlayer}</Item>
+        </Grid>
+        <Grid xs={3}>
+          <Item>{rightUpPlayer}</Item>
+        </Grid>
+        <Grid xs={3}>
+          <Item>{rightDownPlayer}</Item>
+        </Grid>
       </Grid>
     </Box>
   );

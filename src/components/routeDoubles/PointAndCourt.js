@@ -20,7 +20,8 @@ export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPoint
                                         manipulated_3, setManipulated_3,
                                         isHorizPlayerChanged, setIsHorizPlayerChanged,
                                         isLeftVertPlayerChanged, setIsLeftvertPlayerChanged,
-                                        isRightVertPlayerChanged, setIsRightVertPlayerChanged}) {
+                                        isRightVertPlayerChanged, setIsRightVertPlayerChanged,
+                                        leftConsecutivePointSwitch, rightConsecutivePointSwitch}) {
 
   const sm_matches = useMediaQuery('(max-width:899px)');
   const md_matches = useMediaQuery('(min-width:900px)');
@@ -51,6 +52,8 @@ export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPoint
                    isHorizPlayerChanged={isHorizPlayerChanged} setIsHorizPlayerChanged={setIsHorizPlayerChanged}
                    isLeftVertPlayerChanged={isLeftVertPlayerChanged} setIsLeftvertPlayerChanged={setIsLeftvertPlayerChanged}
                    isRightVertPlayerChanged={isRightVertPlayerChanged} setIsRightVertPlayerChanged={setIsRightVertPlayerChanged}
+                   leftConsecutivePointSwitch={leftConsecutivePointSwitch}
+                   rightConsecutivePointSwitch={rightConsecutivePointSwitch}
             />
           </Grid>
         </>
@@ -74,6 +77,8 @@ export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPoint
                    isHorizPlayerChanged={isHorizPlayerChanged} setIsHorizPlayerChanged={setIsHorizPlayerChanged}
                    isLeftVertPlayerChanged={isLeftVertPlayerChanged} setIsLeftvertPlayerChanged={setIsLeftvertPlayerChanged}
                    isRightVertPlayerChanged={isRightVertPlayerChanged} setIsRightVertPlayerChanged={setIsRightVertPlayerChanged}
+                   leftConsecutivePointSwitch={leftConsecutivePointSwitch}
+                   rightConsecutivePointSwitch={rightConsecutivePointSwitch}
             />
           </Grid>
           <Grid md={2.5}>

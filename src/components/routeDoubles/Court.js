@@ -18,11 +18,9 @@ export default function Court( {rightPoint, rightIsServer,
                                 manipulated_3, setManipulated_3,
                                 isHorizPlayerChanged, setIsHorizPlayerChanged,
                                 isLeftVertPlayerChanged, setIsLeftvertPlayerChanged,
-                                isRightVertPlayerChanged, setIsRightVertPlayerChanged}) {
+                                isRightVertPlayerChanged, setIsRightVertPlayerChanged,
+                                leftConsecutivePointSwitch, rightConsecutivePointSwitch}) {
 
-  function handleServay () {
-    console.log(`manipulated_0=${manipulated_0}, manipulated_1=${manipulated_1}, manipulated_2=${manipulated_2}, manipulated_3=${manipulated_3}`);
-  }
   function handleHorizontalPlayerChange () {
     if (isLeftVertPlayerChanged === isRightVertPlayerChanged) {
       setManipulated_0(manipulated_2);
@@ -44,7 +42,6 @@ export default function Court( {rightPoint, rightIsServer,
     } else {
       setIsHorizPlayerChanged(true);
     }
-    console.log(`manipulated_0=${manipulated_0}, manipulated_1=${manipulated_1}, manipulated_2=${manipulated_2}, manipulated_3=${manipulated_3}`);
   }
 
   function handleLeftVerticalPlayerChange () {
@@ -62,7 +59,6 @@ export default function Court( {rightPoint, rightIsServer,
     } else {
       setIsLeftvertPlayerChanged(true);
     }
-    console.log(`manipulated_0=${manipulated_0}, manipulated_1=${manipulated_1}, manipulated_2=${manipulated_2}, manipulated_3=${manipulated_3}`);
   }
 
   function handleRightVerticalPlayerChange () {
@@ -105,26 +101,18 @@ export default function Court( {rightPoint, rightIsServer,
               <LeftUpCourt leftPoint={leftPoint} 
                            leftIsServer={leftIsServer} 
                            leftUpPlayer={leftUpPlayer}
+                           leftDownPlayer={leftDownPlayer}
+                           leftConsecutivePointSwitch={leftConsecutivePointSwitch}
               />
               <LeftDownCourt leftPoint={leftPoint} 
                              leftIsServer={leftIsServer} 
+                             leftUpPlayer={leftUpPlayer}
                              leftDownPlayer={leftDownPlayer}
+                             leftConsecutivePointSwitch={leftConsecutivePointSwitch}
               />
             </div>
           </Grid>
           <Grid xs={2}>
-            {!isStart &&
-              <Fab 
-                size="small" 
-                color="primary" 
-                aria-label="add" 
-                line-height="0" 
-                sx={{ mt: {xs:1.5, sm:14.5, md:19.5}, position: 'absolute' }}
-                onClick={() => handleServay()}
-              >
-                <SwapVertIcon/>
-              </Fab>
-            }
             {!isStart &&
               <Fab 
                 size="small" 
@@ -157,10 +145,14 @@ export default function Court( {rightPoint, rightIsServer,
               <RightUpCourt rightPoint={rightPoint} 
                             rightIsServer={rightIsServer} 
                             rightUpPlayer={rightUpPlayer}
+                            rightDownPlayer={rightDownPlayer}
+                            rightConsecutivePointSwitch={rightConsecutivePointSwitch}
               />
               <RightDownCourt rightPoint={rightPoint} 
                               rightIsServer={rightIsServer} 
+                              rightUpPlayer={rightUpPlayer}
                               rightDownPlayer={rightDownPlayer}
+                              rightConsecutivePointSwitch={rightConsecutivePointSwitch}
               />
             </div>
           </Grid>
@@ -170,82 +162,154 @@ export default function Court( {rightPoint, rightIsServer,
   );
 }
 
-function LeftUpCourt({leftPoint, leftIsServer, leftUpPlayer}) {
+function LeftUpCourt({leftPoint, leftIsServer, leftUpPlayer, leftDownPlayer, leftConsecutivePointSwitch}) {
   return(
     <div className="courtSquare">
       {leftIsServer && leftPoint%2 === 1 ? 
-      <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'red', border: 0.01}}><LeftUpCourtPlayerName leftUpPlayer={leftUpPlayer}/></Box>
+      <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'red', border: 0.01}}>
+        <LeftUpCourtPlayerName leftUpPlayer={leftUpPlayer}
+                               leftDownPlayer={leftDownPlayer}
+                               leftConsecutivePointSwitch={leftConsecutivePointSwitch}
+        />
+      </Box>
       :
-      <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}><LeftUpCourtPlayerName leftUpPlayer={leftUpPlayer}/></Box>
+      <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}>
+        <LeftUpCourtPlayerName leftUpPlayer={leftUpPlayer}
+                               leftDownPlayer={leftDownPlayer}
+                               leftConsecutivePointSwitch={leftConsecutivePointSwitch}
+        />
+      </Box>
     }
     </div>
   );
 }
 
-function LeftUpCourtPlayerName ({leftUpPlayer}) {
+function LeftUpCourtPlayerName ({leftUpPlayer, leftDownPlayer, leftConsecutivePointSwitch}) {
   return (
-    <div className="playerName">
-      {leftUpPlayer}
-    </div>
+    <>
+      {leftConsecutivePointSwitch ?
+        <div className="playerName">
+          {leftDownPlayer}
+        </div>
+      :
+        <div className="playerName">
+          {leftUpPlayer}
+        </div>
+      }
+    </>
   );
 }
 
-function LeftDownCourt({leftPoint, leftIsServer, leftDownPlayer}) {
+function LeftDownCourt({leftPoint, leftIsServer, leftUpPlayer, leftDownPlayer, leftConsecutivePointSwitch}) {
   return(
     <div className="courtSquare">
       {leftIsServer && leftPoint%2 === 0 ? 
-        <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'red', border: 0.01}}><LeftDownCourtPlayerName leftDownPlayer={leftDownPlayer}/></Box>
+        <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'red', border: 0.01}}>
+          <LeftDownCourtPlayerName leftUpPlayer={leftUpPlayer}
+                                   leftDownPlayer={leftDownPlayer}
+                                   leftConsecutivePointSwitch={leftConsecutivePointSwitch}
+          />
+        </Box>
         :
-        <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}><LeftDownCourtPlayerName leftDownPlayer={leftDownPlayer}/></Box>
+        <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}>
+          <LeftDownCourtPlayerName leftUpPlayer={leftUpPlayer}
+                                   leftDownPlayer={leftDownPlayer}
+                                   leftConsecutivePointSwitch={leftConsecutivePointSwitch}
+          />
+        </Box>
       }
     </div>
   );
 }
 
-function LeftDownCourtPlayerName ({leftDownPlayer}) {
+function LeftDownCourtPlayerName ({leftUpPlayer, leftDownPlayer, leftConsecutivePointSwitch}) {
   return (
-    <div className="playerName">
-      {leftDownPlayer}
-    </div>
+    <>
+      {leftConsecutivePointSwitch ?
+        <div className="playerName">
+          {leftUpPlayer}
+        </div>
+      :
+        <div className="playerName">
+          {leftDownPlayer}
+        </div>
+      }
+    </>
   );
 }
 
-function RightUpCourt({rightPoint, rightIsServer, rightUpPlayer}) {
+function RightUpCourt({rightPoint, rightIsServer, rightUpPlayer, rightDownPlayer, rightConsecutivePointSwitch}) {
   return(
     <div className="courtSquare">
       {rightIsServer && rightPoint%2 === 0 ? 
-        <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'red', border: 0.01}}><RightUpCourtPlayerName rightUpPlayer={rightUpPlayer}/></Box>
+        <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'red', border: 0.01}}>
+          <RightUpCourtPlayerName rightUpPlayer={rightUpPlayer}
+                                  rightDownPlayer={rightDownPlayer}
+                                  rightConsecutivePointSwitch={rightConsecutivePointSwitch}
+          />
+        </Box>
         :
-        <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}><RightUpCourtPlayerName rightUpPlayer={rightUpPlayer} /></Box>
+        <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}>
+          <RightUpCourtPlayerName rightUpPlayer={rightUpPlayer} 
+                                  rightDownPlayer={rightDownPlayer}
+                                  rightConsecutivePointSwitch={rightConsecutivePointSwitch}
+          />
+        </Box>
       }
     </div>
   );
 }
 
-function RightUpCourtPlayerName ({rightUpPlayer}) {
+function RightUpCourtPlayerName ({rightUpPlayer, rightDownPlayer, rightConsecutivePointSwitch}) {
   return (
-    <div className="playerName">
-      {rightUpPlayer}
-    </div>
+    <>
+      {rightConsecutivePointSwitch ?
+        <div className="playerName">
+          {rightDownPlayer}
+        </div>
+      :
+        <div className="playerName">
+          {rightUpPlayer}
+        </div>
+      }
+    </>
   );
 }
 
-function RightDownCourt({rightPoint, rightIsServer, rightDownPlayer}) {
+function RightDownCourt({rightPoint, rightIsServer, rightUpPlayer, rightDownPlayer, rightConsecutivePointSwitch}) {
   return(
     <div className="courtSquare">
       {rightIsServer && rightPoint%2 === 1 ? 
-      <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'red', border: 0.01}}><RightDownCourtPlayerName rightDownPlayer={rightDownPlayer}/></Box>
+      <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'red', border: 0.01}}>
+        <RightDownCourtPlayerName rightUpPlayer={rightUpPlayer} 
+                                  rightDownPlayer={rightDownPlayer}
+                                  rightConsecutivePointSwitch={rightConsecutivePointSwitch}
+        />
+      </Box>
       :
-      <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}><RightDownCourtPlayerName rightDownPlayer={rightDownPlayer}/></Box>
+      <Box sx={{ height: {xs:96, sm:136, md:176}, backgroundColor: 'white', border: 0.01}}>
+        <RightDownCourtPlayerName rightUpPlayer={rightUpPlayer} 
+                                  rightDownPlayer={rightDownPlayer}
+                                  rightConsecutivePointSwitch={rightConsecutivePointSwitch}
+        />
+      </Box>
       }
     </div>
   );
 }
 
-function RightDownCourtPlayerName ({rightDownPlayer}) {
+function RightDownCourtPlayerName ({rightUpPlayer, rightDownPlayer, rightConsecutivePointSwitch}) {
   return (
-    <div className="playerName">
-      {rightDownPlayer}
-    </div>
+    <>
+      {rightConsecutivePointSwitch ?
+        <div className="playerName">
+          {rightUpPlayer}
+        </div>
+      :
+        <div className="playerName">
+          {rightDownPlayer}
+        </div>
+      }
+    </>
   );
 }
