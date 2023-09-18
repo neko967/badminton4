@@ -9,13 +9,18 @@ import Court from './Court.js';
 
 export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPointClick, 
                                         rightPoint, rightIsServer, handleRightPointClick,
-                                        leftUpPlayer, leftDownPlayer,
-                                        rightUpPlayer, rightDownPlayer,
+                                        leftUpPlayer, setLeftUpPlayer,
+                                        leftDownPlayer, setLeftDownPlayer,
+                                        rightUpPlayer, setRightUpPlayer,
+                                        rightDownPlayer, setRightDownPlayer,
                                         isStart,
                                         manipulated_0, setManipulated_0, 
                                         manipulated_1, setManipulated_1, 
                                         manipulated_2, setManipulated_2,
-                                        manipulated_3, setManipulated_3}) {
+                                        manipulated_3, setManipulated_3,
+                                        isHorizPlayerChanged, setIsHorizPlayerChanged,
+                                        isLeftVertPlayerChanged, setIsLeftvertPlayerChanged,
+                                        isRightVertPlayerChanged, setIsRightVertPlayerChanged}) {
 
   const sm_matches = useMediaQuery('(max-width:899px)');
   const md_matches = useMediaQuery('(min-width:900px)');
@@ -34,13 +39,18 @@ export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPoint
           <Grid xs={12} sm={12}>
             <Court leftPoint={leftPoint} leftIsServer={leftIsServer} 
                    rightPoint={rightPoint} rightIsServer={rightIsServer}
-                   leftUpPlayer={leftUpPlayer} leftDownPlayer={leftDownPlayer} 
-                   rightUpPlayer={rightUpPlayer} rightDownPlayer={rightDownPlayer}
+                   leftUpPlayer={leftUpPlayer} setLeftUpPlayer={setLeftUpPlayer}
+                   leftDownPlayer={leftDownPlayer} setLeftDownPlayer={setLeftDownPlayer}
+                   rightUpPlayer={rightUpPlayer} setRightUpPlayer={setRightUpPlayer}
+                   rightDownPlayer={rightDownPlayer} setRightDownPlayer={setRightDownPlayer}
                    isStart={isStart}
                    manipulated_0={manipulated_0} setManipulated_0={setManipulated_0} 
                    manipulated_1={manipulated_1} setManipulated_1={setManipulated_1}
                    manipulated_2={manipulated_2} setManipulated_2={setManipulated_2}
                    manipulated_3={manipulated_3} setManipulated_3={setManipulated_3}
+                   isHorizPlayerChanged={isHorizPlayerChanged} setIsHorizPlayerChanged={setIsHorizPlayerChanged}
+                   isLeftVertPlayerChanged={isLeftVertPlayerChanged} setIsLeftvertPlayerChanged={setIsLeftvertPlayerChanged}
+                   isRightVertPlayerChanged={isRightVertPlayerChanged} setIsRightVertPlayerChanged={setIsRightVertPlayerChanged}
             />
           </Grid>
         </>
@@ -52,13 +62,18 @@ export default function PointAndCourt({ leftPoint, leftIsServer, handleLeftPoint
           <Grid md={7}>
             <Court leftPoint={leftPoint} leftIsServer={leftIsServer} 
                    rightPoint={rightPoint} rightIsServer={rightIsServer}
-                   leftUpPlayer={leftUpPlayer} leftDownPlayer={leftDownPlayer} 
-                   rightUpPlayer={rightUpPlayer} rightDownPlayer={rightDownPlayer}
+                   leftUpPlayer={leftUpPlayer} setLeftUpPlayer={setLeftUpPlayer}
+                   leftDownPlayer={leftDownPlayer} setLefDownPlayer={setLeftDownPlayer}
+                   rightUpPlayer={rightUpPlayer} setRightUpPlayer={setRightUpPlayer}
+                   rightDownPlayer={rightDownPlayer} setRightDownPlayer={setRightDownPlayer}
                    isStart={isStart}
                    manipulated_0={manipulated_0} setManipulated_0={setManipulated_0} 
                    manipulated_1={manipulated_1} setManipulated_1={setManipulated_1}
                    manipulated_2={manipulated_2} setManipulated_2={setManipulated_2}
                    manipulated_3={manipulated_3} setManipulated_3={setManipulated_3}
+                   isHorizPlayerChanged={isHorizPlayerChanged} setIsHorizPlayerChanged={setIsHorizPlayerChanged}
+                   isLeftVertPlayerChanged={isLeftVertPlayerChanged} setIsLeftvertPlayerChanged={setIsLeftvertPlayerChanged}
+                   isRightVertPlayerChanged={isRightVertPlayerChanged} setIsRightVertPlayerChanged={setIsRightVertPlayerChanged}
             />
           </Grid>
           <Grid md={2.5}>

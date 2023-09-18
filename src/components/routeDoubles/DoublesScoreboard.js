@@ -26,6 +26,9 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
   const [manipulated_1, setManipulated_1] = useState(1);
   const [manipulated_2, setManipulated_2] = useState(2);
   const [manipulated_3, setManipulated_3] = useState(3);
+  const [isHorizPlayerChanged, setIsHorizPlayerChanged] = useState(false);
+  const [isLeftVertPlayerChanged, setIsLeftvertPlayerChanged] = useState(false);
+  const [isRightVertPlayerChanged, setIsRightVertPlayerChanged] = useState(false);
 
   function handleLeftPointClick() {
     setRightIsServer(false);
@@ -131,13 +134,18 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
                        handleLeftPointClick={handleLeftPointClick}
                        rightPoint={rightPoint} rightIsServer={rightIsServer}
                        handleRightPointClick={handleRightPointClick}
-                       leftUpPlayer={doublesLeftUpPlayer} leftDownPlayer={doublesLeftDownPlayer} 
-                       rightUpPlayer={doublesRightUpPlayer} rightDownPlayer={doublesRightDownPlayer}
+                       leftUpPlayer={doublesLeftUpPlayer} setLeftUpPlayer={setDoublesLeftUpPlayer}
+                       leftDownPlayer={doublesLeftDownPlayer} setLeftDownPlayer={setDoublesLeftDownPlayer}
+                       rightUpPlayer={doublesRightUpPlayer} setRightUpPlayer={setDoublesRightUpPlayer}
+                       rightDownPlayer={doublesRightDownPlayer} setRightDownPlayer={setDoublesRightDownPlayer}
                        isStart={isStart}
                        manipulated_0={manipulated_0} setManipulated_0={setManipulated_0} 
                        manipulated_1={manipulated_1} setManipulated_1={setManipulated_1}
                        manipulated_2={manipulated_2} setManipulated_2={setManipulated_2}
                        manipulated_3={manipulated_3} setManipulated_3={setManipulated_3}
+                       isHorizPlayerChanged={isHorizPlayerChanged} setIsHorizPlayerChanged={setIsHorizPlayerChanged}
+                       isLeftVertPlayerChanged={isLeftVertPlayerChanged} setIsLeftvertPlayerChanged={setIsLeftvertPlayerChanged}
+                       isRightVertPlayerChanged={isRightVertPlayerChanged} setIsRightVertPlayerChanged={setIsRightVertPlayerChanged}
         />
         <ScoreSheet 
           currentPoints={currentPoints} currentSorR={currentSorR}

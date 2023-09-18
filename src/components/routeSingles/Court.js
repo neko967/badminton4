@@ -44,7 +44,7 @@ export default function Court( {rightPoint, rightIsServer,
             {!isStart &&
               <Fab 
                 size="small" 
-                color="secondary" 
+                color="primary" 
                 aria-label="add" 
                 line-height="100" 
                 sx={{ mt: {xs:9.5, sm:14.5, md:19.5} }}

@@ -7,13 +7,18 @@ import SwapVertIcon from '@mui/icons-material/SwapVert';
 
 export default function Court( {rightPoint, rightIsServer, 
                                 leftPoint, leftIsServer,
-                                leftUpPlayer, leftDownPlayer,
-                                rightUpPlayer, rightDownPlayer,
+                                leftUpPlayer, setLeftUpPlayer,
+                                leftDownPlayer, setLeftDownPlayer,
+                                rightUpPlayer, setRightUpPlayer,
+                                rightDownPlayer, setRightDownPlayer,
                                 isStart,
                                 manipulated_0, setManipulated_0,
                                 manipulated_1, setManipulated_1,
                                 manipulated_2, setManipulated_2,
-                                manipulated_3, setManipulated_3}) {
+                                manipulated_3, setManipulated_3,
+                                isHorizPlayerChanged, setIsHorizPlayerChanged,
+                                isLeftVertPlayerChanged, setIsLeftvertPlayerChanged,
+                                isRightVertPlayerChanged, setIsRightVertPlayerChanged}) {
 
   function handleServay () {
     console.log(`manipulated_0=${manipulated_0}, manipulated_1=${manipulated_1}, manipulated_2=${manipulated_2}, manipulated_3=${manipulated_3}`);
@@ -23,20 +28,45 @@ export default function Court( {rightPoint, rightIsServer,
     setManipulated_1(manipulated_3);
     setManipulated_2(manipulated_0);
     setManipulated_3(manipulated_1);
+    setLeftUpPlayer(rightUpPlayer);
+    setLeftDownPlayer(rightDownPlayer);
+    setRightUpPlayer(leftUpPlayer);
+    setRightDownPlayer(leftDownPlayer);
+    if (isHorizPlayerChanged) {
+      setIsHorizPlayerChanged(true);
+    } else {
+      setIsHorizPlayerChanged(false);
+    }
     console.log(`manipulated_0=${manipulated_0}, manipulated_1=${manipulated_1}, manipulated_2=${manipulated_2}, manipulated_3=${manipulated_3}`);
   }
 
   function handleLeftVerticalPlayerChange () {
     setManipulated_0(manipulated_1);
     setManipulated_1(manipulated_0);
+    setLeftUpPlayer(leftDownPlayer);
+    setLeftDownPlayer(leftUpPlayer);
+    if (isLeftVertPlayerChanged) {
+      setIsLeftvertPlayerChanged(true);
+    } else {
+      setIsLeftvertPlayerChanged(false);
+    }
     console.log(`manipulated_0=${manipulated_0}, manipulated_1=${manipulated_1}, manipulated_2=${manipulated_2}, manipulated_3=${manipulated_3}`);
   }
 
   function handleRightVerticalPlayerChange () {
     setManipulated_2(manipulated_3);
     setManipulated_3(manipulated_2);
+    setRightUpPlayer(rightDownPlayer);
+    setRightDownPlayer(rightUpPlayer);
+    if (isRightVertPlayerChanged) {
+      setIsRightVertPlayerChanged(true);
+    } else {
+      setIsRightVertPlayerChanged(false);
+    }
     console.log(`manipulated_0=${manipulated_0}, manipulated_1=${manipulated_1}, manipulated_2=${manipulated_2}, manipulated_3=${manipulated_3}`);
   }
+
+  
 
   return (
     <div>
@@ -46,7 +76,7 @@ export default function Court( {rightPoint, rightIsServer,
             {!isStart &&
               <Fab 
                 size="small" 
-                color="primary" 
+                color="secondary" 
                 aria-label="add" 
                 line-height="0" 
                 sx={{ mt: {xs:9.5, sm:14.5, md:19.5}, position: 'absolute' }}
@@ -80,7 +110,7 @@ export default function Court( {rightPoint, rightIsServer,
             {!isStart &&
               <Fab 
                 size="small" 
-                color="secondary" 
+                color="primary" 
                 aria-label="add" 
                 line-height="100" 
                 sx={{ mt: {xs:9.5, sm:14.5, md:19.5} }}
@@ -94,7 +124,7 @@ export default function Court( {rightPoint, rightIsServer,
             {!isStart &&
               <Fab 
                 size="small" 
-                color="primary" 
+                color="secondary" 
                 aria-label="add" 
                 line-height="0" 
                 sx={{ mt: {xs:9.5, sm:14.5, md:19.5}, position: 'absolute' }}
