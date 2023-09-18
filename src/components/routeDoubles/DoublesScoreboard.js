@@ -29,6 +29,7 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
   const [isHorizPlayerChanged, setIsHorizPlayerChanged] = useState(false);
   const [isLeftVertPlayerChanged, setIsLeftvertPlayerChanged] = useState(false);
   const [isRightVertPlayerChanged, setIsRightVertPlayerChanged] = useState(false);
+  let Players = Object.assign({}, [doublesLeftUpPlayer, doublesLeftDownPlayer, doublesRightUpPlayer, doublesRightDownPlayer] )
 
   function handleLeftPointClick() {
     setRightIsServer(false);
@@ -149,9 +150,13 @@ export default function DoublesScoreboard({ doublesLeftUpPlayer, setDoublesLeftU
         />
         <ScoreSheet 
           currentPoints={currentPoints} currentSorR={currentSorR}
-          leftUpPlayer={doublesLeftUpPlayer} leftDownPlayer={doublesLeftDownPlayer}
-          rightUpPlayer={doublesRightUpPlayer} rightDownPlayer={doublesRightDownPlayer}
-          manipulated_0={manipulated_0} manipulated_1={manipulated_1} manipulated_2={manipulated_2} manipulated_3={manipulated_3}
+          leftUpPlayer={Players[manipulated_0]} leftDownPlayer={Players[manipulated_1]}
+          rightUpPlayer={Players[manipulated_2]} rightDownPlayer={Players[manipulated_3]}
+          manipulated_0={manipulated_0} manipulated_1={manipulated_1} 
+          manipulated_2={manipulated_2} manipulated_3={manipulated_3}
+          isHorizPlayerChanged={isHorizPlayerChanged}
+          isLeftVertPlayerChanged={isLeftVertPlayerChanged}
+          isRightVertPlayerChanged={isRightVertPlayerChanged}
         />
         <StartButton isStart={isStart} onStartClick={handleStartClick}/>
       </Container>

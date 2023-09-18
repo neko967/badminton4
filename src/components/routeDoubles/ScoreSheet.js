@@ -6,30 +6,54 @@ import Divider from '@mui/material/Divider';
 export default function ScoreSheet ({currentPoints, currentSorR,
                                      leftUpPlayer, leftDownPlayer,
                                      rightUpPlayer, rightDownPlayer,
-                                     manipulated_0, manipulated_1, manipulated_2, manipulated_3}) {
+                                     manipulated_0, manipulated_1, manipulated_2, manipulated_3,
+                                     isHorizPlayerChanged, isLeftVertPlayerChanged, isRightVertPlayerChanged}) {
+  console.log(`isHorizPlayerChanged: ${isHorizPlayerChanged}`);
+  console.log(`isLeftVertPlayerChanged: ${isLeftVertPlayerChanged}`);
+  console.log(`isRightVertPlayerChanged: ${isRightVertPlayerChanged}`);
 
   return (
     <div className="scoreSheet">
       <Box sx={{ display: 'fix', flexWrap: 'wrap', '& > :not(style)': { m: 1, width: 1800, height: 110, }, }} >
         <Paper variant="outlined" square>
         <div className="board-row">
-          <button className="doublesNameSquare">{leftUpPlayer}</button>
+          <LeftUpPlayerName leftUpPlayer={leftUpPlayer} leftDownPlayer={leftDownPlayer}
+                            rightUpPlayer={rightUpPlayer} rightDownPlayer={rightDownPlayer}
+                            isHorizPlayerChanged={isHorizPlayerChanged}
+                            isLeftVertPlayerChanged={isLeftVertPlayerChanged}
+                            isRightVertPlayerChanged={isRightVertPlayerChanged}
+          />
           <button className="doublesSquare">{currentSorR[0][0]}</button>
           <PointInScoreSheet squares={currentPoints[0]}/>
         </div>
         <div className="board-row">
-          <button className="doublesNameSquare">{leftDownPlayer}</button>
+          <LeftDownPlayerName leftUpPlayer={leftUpPlayer} leftDownPlayer={leftDownPlayer}
+                              rightUpPlayer={rightUpPlayer} rightDownPlayer={rightDownPlayer}
+                              isHorizPlayerChanged={isHorizPlayerChanged}
+                              isLeftVertPlayerChanged={isLeftVertPlayerChanged}
+                              isRightVertPlayerChanged={isRightVertPlayerChanged}
+          />
           <button className="doublesSquare">{currentSorR[1][0]}</button>
           <PointInScoreSheet squares={currentPoints[1]}/>
         </div>
         <Divider />
         <div className="board-row">
-          <button className="doublesNameSquare">{rightUpPlayer}</button>
+          <RightUpPlayerName leftUpPlayer={leftUpPlayer} leftDownPlayer={leftDownPlayer}
+                             rightUpPlayer={rightUpPlayer} rightDownPlayer={rightDownPlayer}
+                             isHorizPlayerChanged={isHorizPlayerChanged}
+                             isLeftVertPlayerChanged={isLeftVertPlayerChanged}
+                             isRightVertPlayerChanged={isRightVertPlayerChanged}
+          />
           <button className="doublesSquare">{currentSorR[2][0]}</button>
           <PointInScoreSheet squares={currentPoints[2]}/>
         </div>
         <div className="board-row">
-          <button className="doublesNameSquare">{rightDownPlayer}</button>
+          <RightDownPlayerName leftUpPlayer={leftUpPlayer} leftDownPlayer={leftDownPlayer}
+                               rightUpPlayer={rightUpPlayer} rightDownPlayer={rightDownPlayer}
+                               isHorizPlayerChanged={isHorizPlayerChanged}
+                               isLeftVertPlayerChanged={isLeftVertPlayerChanged}
+                               isRightVertPlayerChanged={isRightVertPlayerChanged}
+          />
           <button className="doublesSquare">{currentSorR[3][0]}</button>
           <PointInScoreSheet squares={currentPoints[3]}/>
         </div>
@@ -39,26 +63,49 @@ export default function ScoreSheet ({currentPoints, currentSorR,
   );
 }
 
-function UpPlayerInScoreSheet ({leftPlayer, rightPlayer, isPlayerChanged}) {
+function LeftUpPlayerName ({leftUpPlayer, leftDownPlayer,
+                            rightUpPlayer, rightDownPlayer,
+                            isHorizPlayerChanged, isLeftVertPlayerChanged, isRightVertPlayerChanged}) {
   return (
     <>
-      {!isPlayerChanged ? 
-        <button className="singlesNameSquare">{leftPlayer}</button>
-        :
-        <button className="singlesNameSquare">{rightPlayer}</button>
-      }
+
+            <button className="doublesNameSquare">{leftUpPlayer}</button>
     </>
   );
 }
 
-function DownPlayerInScoreSheet ({leftPlayer, rightPlayer, isPlayerChanged}) {
+function LeftDownPlayerName ({leftUpPlayer, leftDownPlayer,
+                              rightUpPlayer, rightDownPlayer, 
+                              isHorizPlayerChanged, isLeftVertPlayerChanged, isRightVertPlayerChanged}) {
   return (
     <>
-      {!isPlayerChanged ? 
-        <button className="singlesNameSquare">{rightPlayer}</button>
-        :
-        <button className="singlesNameSquare">{leftPlayer}</button>
-      }
+    
+           <button className="doublesNameSquare">{leftDownPlayer}</button>
+      
+    </>
+  );
+}
+
+function RightUpPlayerName ({ leftUpPlayer, leftDownPlayer,
+                              rightUpPlayer, rightDownPlayer,
+                              isHorizPlayerChanged, isLeftVertPlayerChanged, isRightVertPlayerChanged}) {
+  return (
+    <>
+    
+           <button className="doublesNameSquare">{rightUpPlayer}</button>  
+      
+    </>
+  );
+}
+
+function RightDownPlayerName ({leftUpPlayer, leftDownPlayer,
+                               rightUpPlayer, rightDownPlayer, 
+                               isHorizPlayerChanged, isLeftVertPlayerChanged, isRightVertPlayerChanged}) {
+  return (
+    <>
+    
+           <button className="doublesNameSquare">{rightDownPlayer}</button>  
+      
     </>
   );
 }

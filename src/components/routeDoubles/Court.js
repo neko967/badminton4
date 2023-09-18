@@ -24,44 +24,75 @@ export default function Court( {rightPoint, rightIsServer,
     console.log(`manipulated_0=${manipulated_0}, manipulated_1=${manipulated_1}, manipulated_2=${manipulated_2}, manipulated_3=${manipulated_3}`);
   }
   function handleHorizontalPlayerChange () {
-    setManipulated_0(manipulated_2);
-    setManipulated_1(manipulated_3);
-    setManipulated_2(manipulated_0);
-    setManipulated_3(manipulated_1);
+    if (isLeftVertPlayerChanged) {
+      if (isRightVertPlayerChanged) {
+        setManipulated_0(manipulated_2);
+        setManipulated_1(manipulated_3);
+        setManipulated_2(manipulated_0);
+        setManipulated_3(manipulated_1);
+      } else {
+        setManipulated_1(manipulated_2);
+        setManipulated_2(manipulated_1);
+        setManipulated_0(manipulated_3);
+        setManipulated_3(manipulated_0);
+      }
+    } else {
+      if (isRightVertPlayerChanged) {
+        setManipulated_1(manipulated_2);
+        setManipulated_2(manipulated_1);
+        setManipulated_0(manipulated_3);
+        setManipulated_3(manipulated_0);
+      } else {
+        setManipulated_0(manipulated_2);
+        setManipulated_1(manipulated_3);
+        setManipulated_2(manipulated_0);
+        setManipulated_3(manipulated_1);
+      }
+    }
     setLeftUpPlayer(rightUpPlayer);
     setLeftDownPlayer(rightDownPlayer);
     setRightUpPlayer(leftUpPlayer);
     setRightDownPlayer(leftDownPlayer);
     if (isHorizPlayerChanged) {
-      setIsHorizPlayerChanged(true);
-    } else {
       setIsHorizPlayerChanged(false);
+    } else {
+      setIsHorizPlayerChanged(true);
     }
     console.log(`manipulated_0=${manipulated_0}, manipulated_1=${manipulated_1}, manipulated_2=${manipulated_2}, manipulated_3=${manipulated_3}`);
   }
 
   function handleLeftVerticalPlayerChange () {
-    setManipulated_0(manipulated_1);
-    setManipulated_1(manipulated_0);
+    if (isHorizPlayerChanged) {
+      setManipulated_2(manipulated_3);
+      setManipulated_3(manipulated_2);
+    } else {
+      setManipulated_0(manipulated_1);
+      setManipulated_1(manipulated_0);
+    }
     setLeftUpPlayer(leftDownPlayer);
     setLeftDownPlayer(leftUpPlayer);
     if (isLeftVertPlayerChanged) {
-      setIsLeftvertPlayerChanged(true);
-    } else {
       setIsLeftvertPlayerChanged(false);
+    } else {
+      setIsLeftvertPlayerChanged(true);
     }
     console.log(`manipulated_0=${manipulated_0}, manipulated_1=${manipulated_1}, manipulated_2=${manipulated_2}, manipulated_3=${manipulated_3}`);
   }
 
   function handleRightVerticalPlayerChange () {
-    setManipulated_2(manipulated_3);
-    setManipulated_3(manipulated_2);
+    if (isHorizPlayerChanged) {
+      setManipulated_0(manipulated_1);
+      setManipulated_1(manipulated_0);
+    } else {
+      setManipulated_2(manipulated_3);
+      setManipulated_3(manipulated_2);
+    }
     setRightUpPlayer(rightDownPlayer);
     setRightDownPlayer(rightUpPlayer);
     if (isRightVertPlayerChanged) {
-      setIsRightVertPlayerChanged(true);
-    } else {
       setIsRightVertPlayerChanged(false);
+    } else {
+      setIsRightVertPlayerChanged(true);
     }
     console.log(`manipulated_0=${manipulated_0}, manipulated_1=${manipulated_1}, manipulated_2=${manipulated_2}, manipulated_3=${manipulated_3}`);
   }
