@@ -101,7 +101,7 @@ export default function PersistentDrawerLeft({ isAuth, setIsAuth }) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            BadJudgeMaster
+            BirdUmpire
           </Typography>
         </Toolbar>
       </AppBar>
