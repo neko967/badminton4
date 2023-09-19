@@ -135,14 +135,6 @@ export default function PersistentDrawerLeft({ isAuth, setIsAuth }) {
               <ListItemText primary='戦績' />
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding onClick={() => navigate('/member')}>
-            <ListItemButton>
-              <ListItemIcon>
-                <PeopleIcon />
-              </ListItemIcon>
-              <ListItemText primary='メンバー' />
-            </ListItemButton>
-          </ListItem>
         </List>
         <Divider />
         <List>

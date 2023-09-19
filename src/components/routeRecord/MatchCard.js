@@ -4,10 +4,10 @@ export default function MatchCard() {
   return(
     <div className="card">
       <div className="player">
-        <h3>aaa - bbb vs ccc - ddd</h3>
+        <h3>ゲストA - ゲストB vs ゲストC - ゲストD</h3>
       </div>
       <div className="score">
-        <h4>12 - 21</h4>
+        <h4>15 - 21</h4>
       </div>
     </div>
   );

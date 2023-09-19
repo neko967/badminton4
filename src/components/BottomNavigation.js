@@ -31,7 +31,6 @@ export default function Menu() {
             >
               <BottomNavigationAction icon={<HomeIcon />} onClick={() => navigate('/')}/>
               <BottomNavigationAction icon={<RestoreIcon />} onClick={() => navigate('/record')}/>
-              <BottomNavigationAction icon={<MoreVertIcon />} onClick={() => navigate('/member')}/>
             </BottomNavigation>
           </Paper> 
         </Box>
