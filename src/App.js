@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css';
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import Home from './components/routeHome/Home';
+import Home from './components/routesHome/Home';
 import Singles from './components/routeSingles/SinglesScoreboard';
 import Doubles from './components/routeDoubles/DoublesScoreboard';
 import Record from './components/routeRecord/Records';
