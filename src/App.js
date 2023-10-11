@@ -5,6 +5,7 @@ import Home from './components/routeHome/Home';
 import Singles from './components/routeSingles/SinglesScoreboard';
 import Doubles from './components/routeDoubles/DoublesScoreboard';
 import Record from './components/routeRecord/Records';
+import Admin from './components/routeAdmin/Admin';
 import Member from './components/routeMember/Members';
 import Homey from './components/Homey';
 import CreatePost from './components/CreatePost';
@@ -20,6 +21,7 @@ function App() {
   const [doublesLeftDownPlayer, setDoublesLeftDownPlayer] = useState("名無しB");
   const [doublesRightUpPlayer, setDoublesRightUpPlayer] = useState("名無しC");
   const [doublesRightDownPlayer, setDoublesRightDownPlayer] = useState("名無しD");
+  const [isAdmin, setIsAdmin] = useState(false);
 
   return (
     <>
@@ -33,6 +35,7 @@ function App() {
                                          setDoublesRightUpPlayer={setDoublesRightUpPlayer}
                                          setDoublesRightDownPlayer={setDoublesRightDownPlayer}
                                          isAuth={isAuth}
+                                         isAdmin={isAdmin}
                                    />}
           />
           <Route path="/singles" element={<Singles leftPlayer={singlesLeftPlayer} 
@@ -52,6 +55,7 @@ function App() {
                                           />}
           />
           <Route path="/record" element={<Record />} />
+          <Route path="/admin" element={<Admin setIsAdmin={setIsAdmin}/>} />
           <Route path="/member" element={<Member />} />
 
           <Route path="/homey" element={<Homey/>}></Route>

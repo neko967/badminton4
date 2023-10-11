@@ -28,19 +28,19 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(name, calories, fat, carbs) {
-  return { name, calories, fat, carbs};
+function createData(name, calories) {
+  return { name, calories};
 }
 
 const defaultRows = [
-  createData('ゲストA', '〇〇高校', '58%', 2036),
-  createData('ゲストB', '〇〇高校', '47%', 1987),
-  createData('ゲストC', '〇〇高校', '64%', 2134),
-  createData('ゲストD', '〇〇高校', '50%', 2000),
-  createData('ゲストE', '〇〇高校', '43%', 1964),
-  createData('ゲストF', '〇〇高校', '55%', 2025),
-  createData('ゲストG', '〇〇高校', '45%', 1975),
-  createData('ゲストH', '〇〇高校', '41%', 1932),
+  createData('ゲストA', '〇〇高校'),
+  createData('ゲストB', '〇〇高校'),
+  createData('ゲストC', '〇〇高校'),
+  createData('ゲストD', '〇〇高校'),
+  createData('ゲストE', '〇〇高校'),
+  createData('ゲストF', '〇〇高校'),
+  createData('ゲストG', '〇〇高校'),
+  createData('ゲストH', '〇〇高校'),
 ];
 
 const LoginRows = [
@@ -48,7 +48,8 @@ const LoginRows = [
 ];
 
 
-export default function Members( {isAuth}) {
+
+export default function Members( {isAuth, isAdmin}) {
 
   return (
     <>
@@ -58,11 +59,9 @@ export default function Members( {isAuth}) {
             <TableRow>
               <StyledTableCell align="left">名前</StyledTableCell>
               <StyledTableCell align="left">所属</StyledTableCell>
-              <StyledTableCell align="right">勝率</StyledTableCell>
-              <StyledTableCell align="right">強さ</StyledTableCell>
             </TableRow>
           </TableHead>
-          {!isAuth ?
+          {isAuth || isAdmin ||
           <TableBody>
             {defaultRows.map((row) => (
               <StyledTableRow key={row.name}>
@@ -70,12 +69,11 @@ export default function Members( {isAuth}) {
                   {row.name}
                 </StyledTableCell>
                 <StyledTableCell align="left">{row.calories}</StyledTableCell>
-                <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
-          :
+          }
+          {isAuth &&
           <TableBody>
              {LoginRows.map((row) => (
               <StyledTableRow key={row.name}>
@@ -83,8 +81,18 @@ export default function Members( {isAuth}) {
                   {row.name}
                 </StyledTableCell>
                 <StyledTableCell align="left">{row.calories}</StyledTableCell>
-                <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+          }
+          {isAdmin &&
+          <TableBody>
+            {AdminRows.map((row) => (
+              <StyledTableRow key={row.name}>
+                <StyledTableCell component="th" scope="row">
+                  {row.name}
+                </StyledTableCell>
+                <StyledTableCell align="left">{row.calories}</StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>

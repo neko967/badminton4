@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/src/components/routeHome/Member.js
+/src/components/routeAdmin
+/src/components/routeHome/SinglesSelectDialog.js
+/src/components/routeHome/DoublesSelectDialog.js

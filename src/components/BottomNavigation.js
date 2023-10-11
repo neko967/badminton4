@@ -3,6 +3,7 @@ import Paper from '@mui/material/Paper';
 
 import HomeIcon from '@mui/icons-material/Home';
 import RestoreIcon from '@mui/icons-material/Restore';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 import Box from '@mui/material/Box';
@@ -31,6 +32,7 @@ export default function Menu() {
             >
               <BottomNavigationAction icon={<HomeIcon />} onClick={() => navigate('/')}/>
               <BottomNavigationAction icon={<RestoreIcon />} onClick={() => navigate('/record')}/>
+              <BottomNavigationAction icon={<AdminPanelSettingsIcon />} onClick={() => navigate('/admin')}/>
             </BottomNavigation>
           </Paper> 
         </Box>

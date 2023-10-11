@@ -8,7 +8,7 @@ import Member from './Member.js';
 export default function Home({ setSinglesLeftPlayer, setSinglesRightPlayer,
                                setDoublesLeftUpPlayer, setDoublesLeftDownPlayer,
                                setDoublesRightUpPlayer, setDoublesRightDownPlayer,
-                               isAuth }) {
+                               isAuth, isAdmin }) {
   
   const matches = useMediaQuery('(max-width:880px)');
 
@@ -16,7 +16,7 @@ export default function Home({ setSinglesLeftPlayer, setSinglesRightPlayer,
     <div className="App">
       {matches ? 
         <>
-          <Member isAuth={isAuth}/>
+          <Member isAuth={isAuth} isAdmin={isAdmin}/>
           <SpeedDialTooltipOpen setSinglesLeftPlayer={setSinglesLeftPlayer} 
                                 setSinglesRightPlayer={setSinglesRightPlayer}
                                 setDoublesLeftUpPlayer={setDoublesLeftUpPlayer}
@@ -24,6 +24,7 @@ export default function Home({ setSinglesLeftPlayer, setSinglesRightPlayer,
                                 setDoublesRightUpPlayer={setDoublesRightUpPlayer}
                                 setDoublesRightDownPlayer={setDoublesRightDownPlayer}
                                 isAuth={isAuth}
+                                isAdmin={isAdmin}
           />
         </>
            :

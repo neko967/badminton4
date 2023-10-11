@@ -30,7 +30,8 @@ const names = [
   'ゲストA','ゲストB','ゲストC','ゲストD', 'ゲストE','ゲストF','ゲストG','ゲストH'
 ];
 
-export default function DialogSelect({ singlesOpen, handleSinglesClose, setLeftPlayer, setRightPlayer, isAuth }) {
+
+export default function DialogSelect({ singlesOpen, handleSinglesClose, setLeftPlayer, setRightPlayer, isAuth, isAdmin }) {
   const navigate = useNavigate();
 
   const [personName, setPersonName] = React.useState([]);
@@ -56,7 +57,7 @@ export default function DialogSelect({ singlesOpen, handleSinglesClose, setLeftP
         <DialogTitle>2人選んでください</DialogTitle>
         <DialogContent>
           <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap' }}>
-            {!isAuth ?
+            {isAuth || isAdmin ||
             <FormControl sx={{ m: 1, width: 300 }}>
               <InputLabel id="demo-multiple-checkbox-label">シングルス</InputLabel>
               <Select
@@ -77,8 +78,32 @@ export default function DialogSelect({ singlesOpen, handleSinglesClose, setLeftP
                 ))}
               </Select>
             </FormControl>
-            :
+            }
+            {isAuth &&
             <Paper>ログイン後は自分が登録したメンバーが出るように鋭意製作中です</Paper>
+            }
+            {isAdmin &&
+            <FormControl sx={{ m: 1, width: 300 }}>
+              <InputLabel id="demo-multiple-checkbox-label">シングルス</InputLabel>
+              <Select
+                labelId="demo-multiple-checkbox-label"
+                id="demo-multiple-checkbox"
+                multiple
+                value={personName}
+                onChange={handleChange}
+                input={<OutlinedInput label="Tag" />}
+                renderValue={(selected) => selected.join(', ')}
+                MenuProps={MenuProps}
+              >
+                {adminNames.map((name) => (
+                  <MenuItem key={name} value={name}>
+                    <Checkbox checked={personName.indexOf(name) > -1} />
+                    <ListItemText primary={name} />
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
             }
           </Box>
         </DialogContent>
