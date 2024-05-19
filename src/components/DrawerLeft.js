@@ -18,14 +18,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
 import RestoreIcon from '@mui/icons-material/Restore';
-import PeopleIcon from '@mui/icons-material/People';
-import LoginIcon from '@mui/icons-material/Login';
-import LogoutIcon from '@mui/icons-material/Logout';
-
-import Avatar from '@mui/material/Avatar';
 import { useNavigate } from 'react-router-dom';
-import { auth, provider } from '../firebase'
-import { signInWithPopup, signOut } from 'firebase/auth'
 
 const drawerWidth = 250;
 
@@ -57,23 +50,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function PersistentDrawerLeft({ isAuth, setIsAuth }) {
   const navigate = useNavigate();
-  const loginInWithGoogle = () => {
-    //Googleでログイン
-    signInWithPopup(auth, provider).then((result) => {
-      localStorage.setItem("isAuth", true);
-      setIsAuth(true);
-      navigate("/");
-    });
-  }
-
-  const logout = () => {
-    //ログアウト
-    signOut(auth).then(() => {
-      localStorage.clear();
-      setIsAuth(false);
-      navigate("/");
-    });
-  };
 
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -137,27 +113,6 @@ export default function PersistentDrawerLeft({ isAuth, setIsAuth }) {
           </ListItem>
         </List>
         <Divider />
-        <List>
-          {isAuth ? 
-          <ListItem key='ログアウト' disablePadding onClick={logout}>
-            <ListItemButton>
-              <ListItemIcon>
-                <LogoutIcon />
-              </ListItemIcon>
-              <ListItemText primary='ログアウト' />
-            </ListItemButton>
-          </ListItem>
-          :
-          <ListItem key='ログイン' disablePadding onClick={loginInWithGoogle}>
-            <ListItemButton>
-              <ListItemIcon>
-                <LoginIcon />
-              </ListItemIcon>
-              <ListItemText primary='ログイン' />
-            </ListItemButton>
-          </ListItem>
-          }
-        </List>
       </Drawer>
     </Box>
   );
