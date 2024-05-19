@@ -28,19 +28,19 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(name, calories) {
-  return { name, calories};
+function createData(name) {
+  return { name};
 }
 
 const defaultRows = [
-  createData('ゲストA', '〇〇高校'),
-  createData('ゲストB', '〇〇高校'),
-  createData('ゲストC', '〇〇高校'),
-  createData('ゲストD', '〇〇高校'),
-  createData('ゲストE', '〇〇高校'),
-  createData('ゲストF', '〇〇高校'),
-  createData('ゲストG', '〇〇高校'),
-  createData('ゲストH', '〇〇高校'),
+  createData('ゲストA'),
+  createData('ゲストB'),
+  createData('ゲストC'),
+  createData('ゲストD'),
+  createData('ゲストE'),
+  createData('ゲストF'),
+  createData('ゲストG'),
+  createData('ゲストH'),
 ];
 
 export default function Members() {
@@ -52,7 +52,6 @@ export default function Members() {
           <TableHead>
             <TableRow>
               <StyledTableCell align="left">名前</StyledTableCell>
-              <StyledTableCell align="left">所属</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -61,7 +60,6 @@ export default function Members() {
                 <StyledTableCell component="th" scope="row">
                   {row.name}
                 </StyledTableCell>
-                <StyledTableCell align="left">{row.calories}</StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
