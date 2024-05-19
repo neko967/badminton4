@@ -32,7 +32,6 @@ export default function Menu() {
             >
               <BottomNavigationAction icon={<HomeIcon />} onClick={() => navigate('/')}/>
               <BottomNavigationAction icon={<RestoreIcon />} onClick={() => navigate('/record')}/>
-              <BottomNavigationAction icon={<AdminPanelSettingsIcon />} onClick={() => navigate('/admin')}/>
             </BottomNavigation>
           </Paper> 
         </Box>

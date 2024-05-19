@@ -43,13 +43,7 @@ const defaultRows = [
   createData('ゲストH', '〇〇高校'),
 ];
 
-const LoginRows = [
-  createData('ログイン後は自分が登録したメンバーが出るように鋭意製作中です'),
-];
-
-
-
-export default function Members( {isAuth, isAdmin}) {
+export default function Members() {
 
   return (
     <>
@@ -61,7 +55,6 @@ export default function Members( {isAuth, isAdmin}) {
               <StyledTableCell align="left">所属</StyledTableCell>
             </TableRow>
           </TableHead>
-          {isAuth || isAdmin ||
           <TableBody>
             {defaultRows.map((row) => (
               <StyledTableRow key={row.name}>
@@ -72,19 +65,6 @@ export default function Members( {isAuth, isAdmin}) {
               </StyledTableRow>
             ))}
           </TableBody>
-          }
-          {isAuth &&
-          <TableBody>
-             {LoginRows.map((row) => (
-              <StyledTableRow key={row.name}>
-                <StyledTableCell component="th" scope="row">
-                  {row.name}
-                </StyledTableCell>
-                <StyledTableCell align="left">{row.calories}</StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-          }
         </Table>
       </TableContainer>
     </>
